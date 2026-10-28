@@ -41,3 +41,17 @@ Lalu daftar akun di satu perangkat, masuk di perangkat lain: tugasmu sama.
   penyimpanan internal (taskmate.*) sengaja dipertahankan agar data dan sesi pengguna lama tidak hilang.
 - Level kepentingan tugas (Rendah/Sedang/Tinggi) memakai warna yang sama dengan level risiko
   (hijau/kuning/oranye); merah hanya dipakai untuk risiko Kritis.
+
+
+## Perbaikan isolasi data akun (2026-10)
+- Data cloud dipisahkan berdasarkan email akun yang tercantum pada token sesi.
+- Akun cloud baru tanpa data tersimpan kini mulai dengan daftar tugas kosong, bukan enam tugas contoh.
+- Data lokal lama untuk email yang sama tetap bisa dibaca untuk mendukung migrasi dari mode lokal.
+- Akun yang sebelumnya sudah menyimpan tugas contoh di cloud tidak dihapus otomatis; periksa data tersebut sebelum menghapusnya.
+
+
+## Profil dan avatar
+- Kartu profil di sidebar menjadi satu-satunya ringkasan profil dan dapat diklik untuk membuka halaman Profil.
+- Halaman Profil menyediakan pilihan 32 avatar emoji imut, opsi kembali ke inisial, dan unggah foto JPG/PNG/WebP.
+- Foto di-crop persegi dan diperkecil ke 256x256 JPEG agar lebih ringan untuk penyimpanan dan sinkronisasi cloud.
+- Avatar disimpan di `prefs.avatar`, sehingga mengikuti data akun dan sinkronisasi antarperangkat.
