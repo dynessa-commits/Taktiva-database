@@ -91,6 +91,18 @@ nav{background:linear-gradient(185deg,#1D1856 0%,#3A2A9E 100%);border-right:0;co
 .brand b{color:#fff;display:block;line-height:1}.brand small{display:block;opacity:.7;font:500 12px Figtree,sans-serif;margin-top:3px}.brand svg{background:#ffffff22;border-radius:12px;padding:2px}
 .ucard{display:flex;gap:10px;align-items:center;background:#ffffff1a;border-radius:14px;padding:10px;margin:2px 0 10px}.ucard b{display:block;line-height:1.2}.ucard small{opacity:.7;font-size:12px}
 .av{width:36px;height:36px;flex:none;border-radius:12px;background:linear-gradient(135deg,#FFC857,#FF8FA3);color:#2a1f7a;display:grid;place-items:center;font:800 16px 'Bricolage Grotesque',sans-serif}.av.big{width:64px;height:64px;font-size:28px;border-radius:20px}
+.av img{width:100%;height:100%;display:block;object-fit:cover;border-radius:inherit}
+.av.emoji{font-family:'Apple Color Emoji','Segoe UI Emoji',sans-serif;font-size:22px}
+.av.big.emoji{font-size:34px}
+button.ucard{appearance:none;width:100%;border:1px solid #ffffff22;color:inherit;text-align:left;font:inherit;cursor:pointer}
+button.ucard:hover{background:#ffffff24;transform:translateY(-1px)}
+button.ucard:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.avgrid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:7px;margin:8px 0 12px;max-width:480px}
+.avpick{min-width:0;min-height:44px;border:1px solid var(--ln);border-radius:12px;background:var(--sf);font:24px 'Apple Color Emoji','Segoe UI Emoji',sans-serif;cursor:pointer;transition:transform .18s,border-color .18s,background .18s}
+.avpick:hover{transform:translateY(-2px);border-color:var(--ac);background:var(--ac2)}
+.avpick.sel{border:2px solid var(--ac);background:var(--ac2);box-shadow:0 0 0 2px #8e5bff22}
+@media(max-width:430px){.avgrid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+
 nav button{color:#ffffffb8}nav button:hover{background:#ffffff1f;color:#fff}nav button.on{background:#fff;color:#3A2A9E;box-shadow:0 8px 20px -8px #0009}
 .bd{margin-left:auto;font-style:normal;font-size:11px;font-weight:700;background:var(--bd);color:#fff;border-radius:99px;padding:1px 7px}
 .nx{margin-top:auto;background:#ffffff1a;border-radius:14px;padding:12px;cursor:pointer;display:flex;flex-direction:column;gap:2px;transition:background .2s,transform .2s}.nx:hover{background:#ffffff2b;transform:translateY(-2px)}.nx small,.nx span{opacity:.75;font-size:12px}.nx b{font:700 14px 'Bricolage Grotesque',sans-serif}nav .tag{margin-top:10px;color:#ffffff99}
@@ -151,12 +163,18 @@ nav button.on{background:linear-gradient(135deg,#fff,#EDE9FF);color:#3A2A9E;font
 const $=s=>document.querySelector(s),dlg=$('#dlg');let K='';
 const ic=n=>`<svg class="i"><use href="#${n}"/></svg>`;
 const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const AVATARS=['🐱','😺','😸','😻','😽','🙀','🐰','🐻','🐼','🦊','🐸','🐧','🐣','🐨','🐹','🐯','🐶','🐵','🦄','🐙','🐢','🐥','🦋','🐮','🐷','🐤','🐲','👻','🌸','⭐','🍓','🍡'];
+function avatarHTML(big=false){const a=S.prefs.avatar||'',cls='av'+(big?' big':'');if(/^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(a))return `<span class='${cls} photo'><img src='${a}' alt='Avatar profil'></span>`;if(AVATARS.includes(a))return `<span class='${cls} emoji' role='img' aria-label='Avatar profil'>${e(a)}</span>`;return `<span class='${cls}'>${e(((S.prefs.name||'?').trim()[0]||'?').toUpperCase())}</span>`}
+function setAvatar(i){S.prefs.avatar=i<0?'':(AVATARS[i]||'');render()}
+function avatarUpload(input){const file=input.files&&input.files[0];if(!file)return;const allowed=['image/jpeg','image/png','image/webp'];if(!allowed.includes(file.type)){alert(T('Format foto tidak didukung. Gunakan JPG, PNG, atau WebP.','Unsupported photo format. Use JPG, PNG, or WebP.'));input.value='';return}if(file.size>8*1024*1024){alert(T('Ukuran foto maksimal 8 MB.','Photo must be 8 MB or smaller.'));input.value='';return}const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{try{const side=Math.min(img.naturalWidth,img.naturalHeight);if(!side)throw new Error('invalid image');const canvas=document.createElement('canvas');canvas.width=256;canvas.height=256;const ctx=canvas.getContext('2d');ctx.drawImage(img,(img.naturalWidth-side)/2,(img.naturalHeight-side)/2,side,side,0,0,256,256);S.prefs.avatar=canvas.toDataURL('image/jpeg',0.76);render()}catch(x){alert(T('Foto tidak bisa diproses. Coba foto lain.','Could not process this photo. Try another image.'))}};img.onerror=()=>alert(T('Foto tidak bisa dibuka. Coba foto lain.','Could not open this photo. Try another image.'));img.src=reader.result};reader.onerror=()=>alert(T('Foto gagal dibaca.','Could not read the photo.'));reader.readAsDataURL(file);input.value=''}
+
 const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const pd=s=>new Date(s+'T00:00:00'),add=(s,n)=>{const d=pd(s);d.setDate(d.getDate()+n);return ymd(d)};
 const TODAY=ymd(new Date()),dd=s=>Math.round((pd(s)-pd(TODAY))/864e5);
 const fd=s=>pd(s).toLocaleDateString(L=='en'?'en-US':'id-ID',{weekday:'short',day:'numeric',month:'short'});
 const RL=['Rendah','Sedang','Tinggi','Kritis'];
-const fresh=()=>({prefs:{name:'Mahasiswa',level:'Mahasiswa',hours:4,time:'malam',buffer:1},tasks:[],id:10}),UK='taskmate.users',SK='taskmate.session',TK='taskmate.theme';
+const fresh=()=>({prefs:{name:'Mahasiswa',level:'Mahasiswa',hours:4,time:'malam',buffer:1,avatar:''},tasks:[],id:10}),UK='taskmate.users',SK='taskmate.session',TK='taskmate.theme';
 let em='',reg=false,S=fresh(),view='dash',sel=null,editId=null,cm=new Date();
 const users=()=>{try{return JSON.parse(localStorage.getItem(UK))||{}}catch(x){return{}}};
 const hash=async p=>{try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('tm:'+p));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(x){return btoa(unescape(encodeURIComponent(p)))}};
@@ -326,7 +344,7 @@ document.addEventListener('click',ev=>{const g=ev.target,nb=g.closest('nav [data
 let cd=TODAY;
 const sched=t=>{const cap=+S.prefs.hours||1,P=plan(t),R=[];let end=add(t.due,-(+S.prefs.buffer||0));for(let i=P.length-1;i>=0;i--){const dy=Math.max(1,Math.ceil(P[i].h/cap)),s=add(end,-(dy-1));R[i]={s,e:end,dy,p:P[i],i};end=add(s,-1)}return R};
 function nav(){const A=analyze(),R=A.filter(a=>a.risk>=2).length,nx=A.slice().sort((a,b)=>dd(a.t.due)-dd(b.t.due))[0],bd={tasks:A.length,rescue:R};
-$('#nav').innerHTML=`<div class='brand'><svg><use href='#logo'/></svg><div><b>Taktiva</b><small>${T('Teman tugasmu','Your task buddy')}</small></div></div><div class='ucard'><span class='av'>${e(((S.prefs.name||'?').trim()[0]||'?').toUpperCase())}</span><div><b>${e(S.prefs.name)}</b><small>${e(S.prefs.level)}</small></div></div>`+NAV.map(n=>`<button data-v='${n[0]}' class='${view==n[0]?'on':''}' aria-label='${n[2]}'>${ic(n[1])}<span>${n[2]}</span>${bd[n[0]]?`<i class='bd'>${bd[n[0]]}</i>`:''}</button>`).join('')+(nx?`<div class='nx' data-pid='${nx.t.id}'><small>${T('Deadline terdekat','Next deadline')}</small><b>${e(nx.t.title)}</b><span>${when(dd(nx.t.due))}</span></div>`:'')+`<div class='tag'>Don’t Just Track Deadlines. Stay Ahead of Them.</div>`}
+$('#nav').innerHTML=`<div class='brand'><svg><use href='#logo'/></svg><div><b>Taktiva</b><small>${T('Teman tugasmu','Your task buddy')}</small></div></div><button type='button' class='ucard' onclick='go("me")' aria-label='Buka profil'>${avatarHTML()}<div><b>${e(S.prefs.name)}</b><small>${e(S.prefs.level)}</small></div></button>`+NAV.map(n=>`<button data-v='${n[0]}' class='${view==n[0]?'on':''}' aria-label='${n[2]}'>${ic(n[1])}<span>${n[2]}</span>${bd[n[0]]?`<i class='bd'>${bd[n[0]]}</i>`:''}</button>`).join('')+(nx?`<div class='nx' data-pid='${nx.t.id}'><small>${T('Deadline terdekat','Next deadline')}</small><b>${e(nx.t.title)}</b><span>${when(dd(nx.t.due))}</span></div>`:'')+`<div class='tag'>Don’t Just Track Deadlines. Stay Ahead of Them.</div>`}
 function pDay(d){cd=d;render()}
 function pToday(){cm=new Date();cd=TODAY;render()}
 function pStage(tid,i){sel=tid;pDone(i)}
@@ -348,8 +366,11 @@ const pnm=v=>{S.prefs.name=v.trim()||S.prefs.name;render()},phr=v=>{S.prefs.hour
 V.me=function(){const p=S.prefs,A=analyze(),dn=S.tasks.filter(t=>t.progress>=100).length,hr=S.tasks.reduce((s,t)=>s+t.est*t.progress/100,0),rk=A.filter(a=>a.risk>=2).length;
 const ch=(k,lab)=>PV[k].map((v,i)=>`<button class='btn s ${p[PK[k]]==v?'':'g'}' onclick='pfi(${k},${i})'>${lab[i]}</button>`).join('');
 return hd(T('Profil & Preferensi Belajar','Profile & Study Preferences'),T('Atur gaya belajarmu. Semua hitungan risiko dan jadwal mengikuti pengaturan ini.','Set your study style. All risk and schedule calculations follow these settings.'))+
-`<div class='pfb'><span class='av big'>${e(((p.name||'?').trim()[0]||'?').toUpperCase())}</span><div style='flex:1;min-width:170px'><h3>${e(p.name)}</h3><p>${e(p.level)}</p></div><div class='cs'><div class='ch'><b>${A.length}</b><br><small>${T('aktif','active')}</small></div><div class='ch'><b>${dn}</b><br><small>${T('selesai','done')}</small></div><div class='ch'><b>${H(hr)}</b><br><small>${T('dikerjakan','worked')}</small></div></div></div>
-<div class='grid g2'><div class='card'><h3>${T('Tentang kamu','About you')}</h3><label for='n'>${T('Nama','Name')}</label><input id='n' value='${e(p.name)}' onchange='pnm(this.value)'><label>${T('Jenjang','Level')}</label><div class='chips'>${ch(2,[T('Mahasiswa','University student'),'SMA/SMK'])}</div>
+`<div class='grid g2'><div class='card'><h3>${T('Tentang kamu','About you')}</h3>
+<label>${T('Avatar profil','Profile avatar')}</label><p style='color:var(--mu);margin:4px 0'>${T('Pilih karakter imut atau unggah foto sendiri. Avatar ini juga tampil di menu samping.','Choose a cute character or upload your own photo. It also appears in the sidebar.')}</p>
+<div class='avgrid'>${AVATARS.map((v,i)=>`<button type='button' class='avpick ${p.avatar===v?'sel':''}' onclick='setAvatar(${i})' title='${T('Pilih avatar','Choose avatar')} ${i+1}' aria-label='${T('Pilih avatar','Choose avatar')} ${i+1}'>${e(v)}</button>`).join('')}</div>
+<div class='chips' style='margin-bottom:14px'><label class='btn g s' style='margin:0;cursor:pointer'>${T('Unggah foto','Upload photo')}<input type='file' accept='image/jpeg,image/png,image/webp' hidden onchange='avatarUpload(this)'></label><button type='button' class='btn g s' onclick='setAvatar(-1)'>${T('Pakai inisial','Use initials')}</button></div>
+<label for='n'>${T('Nama','Name')}</label><input id='n' value='${e(p.name)}' onchange='pnm(this.value)'><label>${T('Jenjang','Level')}</label><div class='chips'>${ch(2,[T('Mahasiswa','University student'),'SMA/SMK'])}</div>
 <h3 style='margin-top:18px'>${T('Tampilan & akun','Appearance & account')}</h3><div class='chips'><button class='btn g s' onclick='setTheme()'>${T('Ganti tema','Switch theme')}</button><button class='btn g s' onclick='setLang()'>${T('Ganti bahasa','Change language')}</button><button class='btn d s' onclick='logout()'>${ic('out')}${T('Keluar','Sign out')}</button></div></div>
 <div class='card'><h3>${T('Ritme belajar','Study rhythm')}</h3><label for='hs'>${T('Jam belajar per hari','Study hours per day')}: <b id='hv'>${p.hours}</b></label><input id='hs' type='range' min='1' max='12' step='0.5' value='${p.hours}' oninput='hv.textContent=this.value' onchange='phr(this.value)'>
 <label>${T('Waktu belajar terbaik','Best study time')}</label><div class='chips'>${ch(0,[T('Pagi','Morning'),T('Siang','Afternoon'),T('Sore','Late afternoon'),T('Malam','Night')])}</div><label>${T('Jeda aman sebelum deadline','Safety buffer before deadline')}</label><div class='chips'>${ch(1,PV[1].map(v=>T(`${v} hari`,`${v} day(s)`)))}</div>
