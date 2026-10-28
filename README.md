@@ -55,3 +55,12 @@ Lalu daftar akun di satu perangkat, masuk di perangkat lain: tugasmu sama.
 - Halaman Profil menyediakan pilihan 32 avatar emoji imut, opsi kembali ke inisial, dan unggah foto JPG/PNG/WebP.
 - Foto di-crop persegi dan diperkecil ke 256x256 JPEG agar lebih ringan untuk penyimpanan dan sinkronisasi cloud.
 - Avatar disimpan di `prefs.avatar`, sehingga mengikuti data akun dan sinkronisasi antarperangkat.
+
+
+## UI refresh: sidebar and Taktiva mascot avatars
+- The sidebar uses a softer light theme with a compact profile card at the top.
+- The bottom Profile navigation item is removed; clicking the profile card opens Profile.
+- On mobile, a profile shortcut appears in the top toolbar so Profile remains accessible.
+- Profile page uses a two-column layout: profile/mascot picker on the left, study rhythm and appearance/language on the right, with backup controls below.
+- Added 15 original SVG mascot pose variants under `public/mascots/`. The selected mascot or uploaded photo is stored in the existing account preferences.
+- Theme choices now include Auto, Light, and Dark.
