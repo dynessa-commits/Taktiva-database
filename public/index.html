@@ -190,7 +190,8 @@ function start(m){em=m;K='taskmate.data.'+m;view='dash';sel=null;load();$('#v').
 function logout(){try{localStorage.removeItem(SK)}catch(x){}em='';$('.app').hidden=true;$('#auth').hidden=false;authUI(false);tgi()}
 function boot(){glow();try{const t=localStorage.getItem(TK);if(t)document.documentElement.dataset.theme=t}catch(x){}let s='';try{s=localStorage.getItem(SK)}catch(x){}
 if(s&&users()[s])start(s);else logout();a_p.addEventListener('keydown',x=>{if(x.key=='Enter')doAuth()})}
-function load(){try{const r=localStorage.getItem(K);if(r){S=JSON.parse(r);return}}catch(x){}S=fresh();const u=users()[em]||{};S.prefs.name=u.name||'Mahasiswa';S.prefs.level=u.level||'Mahasiswa';
+function load(seedDemo=true){try{const r=localStorage.getItem(K);if(r){S=JSON.parse(r);return}}catch(x){}S=fresh();const u=users()[em]||{};S.prefs.name=u.name||'Mahasiswa';S.prefs.level=u.level||'Mahasiswa';
+if(!seedDemo)return;
 const t=(a,b,c,d,p,i)=>({id:++S.id,title:a,course:b,due:add(TODAY,c),est:d,progress:p,imp:i});
 S.tasks=[t('Presentasi PPT Manajemen Perkantoran Digital','Manajemen Perkantoran Digital',4,6,25,2),t('Makalah Perilaku Organisasi','Perilaku Organisasi',2,12,20,3),t('Video Praktik Perkantoran','Praktik Perkantoran',7,10,10,2),t('UTS Digital Communication','Digital Communication',5,12,0,3),t('Prototype Website Development','Website Development',13,20,15,3),t('Rangkuman Materi Pengantar Bisnis','Pengantar Bisnis',9,3,0,1)]}
 function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(x){}}
@@ -382,7 +383,7 @@ async function logout(){if(cloud&&tok){while(busy)await new Promise(r=>setTimeou
 clearTimeout(pend);try{localStorage.removeItem(SK);localStorage.removeItem(TKN)}catch(x){}showAuth()}
 const authGo=()=>cloud?cloudAuth():doAuth();
 async function enter(m,u){em=m;K='taskmate.data.'+m;const d=await api('data');if(d.s==401)return expire();
-if(d.s==200&&d.j.data){S=d.j.data;rev=d.j.rev;lastJ=JSON.stringify(S);resnap();setSt('ok')}else{rev=0;lastJ='';snap={};load();if(!S.prefs.name||S.prefs.name=='Mahasiswa')S.prefs.name=u.name;S.prefs.level=S.prefs.level||u.level;setSt('sync')}
+if(d.s==200&&d.j.data){S=d.j.data;rev=d.j.rev;lastJ=JSON.stringify(S);resnap();setSt('ok')}else{rev=0;lastJ='';snap={};load(false);if(!S.prefs.name||S.prefs.name=='Mahasiswa')S.prefs.name=u.name;S.prefs.level=S.prefs.level||u.level;setSt('sync')}
 try{localStorage.setItem(RV+m,rev)}catch(x){}startApp()}
 async function cloudAuth(){const m=a_e.value.trim().toLowerCase(),p=a_p.value,msg=x=>{$('#a_m').textContent=x},b=$('#a_b');
 if(!/^[^ @]+@[^ @]+[.][^ @]+$/.test(m))return msg(T('Masukkan email yang valid.','Enter a valid email.'));if(p.length<8)return msg(T('Kata sandi minimal 8 karakter.','Password must be at least 8 characters.'));
