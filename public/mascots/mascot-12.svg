@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Taktiva mascot 12">
+<rect width="100" height="100" rx="22" fill="#E8F8EF"/>
+<path d="M12 32 l2 -5 l2 5 l5 2 l-5 2 l-2 5 l-2 -5 l-5 -2Z" fill="#FFC857"/><circle cx="85" cy="25" r="2.5" fill="#FF9DB5"/>
+<path d="M24 36 C18 19 32 14 39 27 M76 36 C82 19 68 14 61 27" fill="#72C98B" stroke="#30965D" stroke-width="2"/><circle cx="31" cy="27" r="5" fill="#fff"/><circle cx="69" cy="27" r="5" fill="#fff"/><circle cx="32" cy="27" r="2" fill="#29234E"/><circle cx="68" cy="27" r="2" fill="#29234E"/>
+<path d="M24 35 L20 11 Q19 6 25 10 L39 22Z" fill="#6552E8" stroke="#4B3FE0" stroke-width="2"/><path d="M76 35 L80 11 Q81 6 75 10 L61 22Z" fill="#6552E8" stroke="#4B3FE0" stroke-width="2"/><path d="M25 22 L24 15 L32 23Z M75 22 L76 15 L68 23Z" fill="#FF9DB5"/>
+<ellipse cx="50" cy="73" rx="22" ry="12" fill="#6552E8"/><ellipse cx="34" cy="79" rx="8" ry="5" fill="#8D7CFF"/><ellipse cx="66" cy="79" rx="8" ry="5" fill="#8D7CFF"/>
+<rect x="20" y="20" width="60" height="52" rx="24" fill="#6552E8" stroke="#4B3FE0" stroke-width="2"/><rect x="27" y="29" width="46" height="36" rx="17" fill="#FFFDFE"/>
+<ellipse cx="39" cy="42" rx="3.5" ry="4.5" fill="#29234E"/><ellipse cx="61" cy="42" rx="3.5" ry="4.5" fill="#29234E"/><circle cx="40.2" cy="40.6" r="1.2" fill="#fff"/><circle cx="62.2" cy="40.6" r="1.2" fill="#fff"/>
+<ellipse cx="31" cy="50" rx="5" ry="3" fill="#FFB3C8"/><ellipse cx="69" cy="50" rx="5" ry="3" fill="#FFB3C8"/>
+<path d="M45 52 Q50 57 55 52" fill="none" stroke="#29234E" stroke-width="2.2" stroke-linecap="round"/><path d="M48 49 Q50 46 52 49 Q50 52 48 49Z" fill="#FF8FA3"/>
+<path d="M45 29 l4 4 l7 -8" fill="none" stroke="#FFC857" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M25 66 Q50 78 75 66" fill="none" stroke="#72C98B" stroke-width="7" stroke-linecap="round"/>
+</svg>
