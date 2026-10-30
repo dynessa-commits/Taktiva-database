@@ -132,6 +132,167 @@ nav button.on{background:linear-gradient(135deg,#fff,#EDE9FF);color:#3A2A9E;font
 .row:hover{background:linear-gradient(90deg,var(--ac2),transparent)}
 .ip{font-weight:600;color:var(--ac)}.ip.i1{color:var(--mu);font-weight:500}
 .ip{font-weight:600}.ip.i1{color:var(--ok);font-weight:600}.ip.i2{color:var(--wa)}.ip.i3{color:#D2641F}
+
+/* Taktiva profile refresh: calm sidebar, mascot avatars, and a clearer profile layout */
+.app{grid-template-columns:240px minmax(0,1fr)}
+nav{background:linear-gradient(180deg,#FBFAFF 0%,#F5F3FF 100%);color:#24264D;border-right:1px solid #E9E6F8;padding:20px 14px;gap:6px;box-shadow:none}
+.brand{padding:2px 7px 14px;gap:10px}
+.brand b{color:#24264D;font-size:22px}
+.brand small{color:#77799A;opacity:1}
+.brand svg{background:#EEEBFF;border-radius:13px;padding:3px;box-shadow:none;animation:none}
+.ucard{display:flex;gap:10px;align-items:center;background:#EFECFF;border:1px solid #E5E0FF;border-radius:15px;padding:10px;margin:3px 0 15px;color:#24264D;min-height:58px}
+.ucard b{display:block;line-height:1.2;font-size:14px}
+.ucard small{display:block;color:#77799A;opacity:1;font-size:12px;margin-top:3px}
+.ucopy{min-width:0;flex:1}.ucopy b,.ucopy small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ucard-arrow{font-size:24px;line-height:1;color:#7164E8;opacity:.85}
+button.ucard{appearance:none;width:100%;text-align:left;font:inherit;cursor:pointer;box-shadow:none}
+button.ucard:hover{background:#E8E3FF;transform:translateY(-1px);border-color:#D9D1FF}
+.av{width:40px;height:40px;flex:none;border-radius:13px;overflow:hidden;background:#EFECFF;color:#3B2E98;display:grid;place-items:center;font:800 16px 'Bricolage Grotesque',sans-serif}
+.av.big{width:56px;height:56px;font-size:24px;border-radius:17px}
+.av img{width:100%;height:100%;display:block;object-fit:cover;border-radius:inherit}
+.av.mascot,.av.photo{padding:0;background:transparent}
+.av.mascot img{object-fit:cover}
+.av.emoji{font-family:'Apple Color Emoji','Segoe UI Emoji',sans-serif;font-size:22px}
+.av.big.emoji{font-size:32px}
+.av.initials{background:linear-gradient(135deg,#DCD5FF,#F9D9E8)}
+nav button{color:#666987;border-radius:12px;padding:10px 11px;gap:11px;font-weight:600}
+nav button svg{box-sizing:content-box;padding:5px;background:#EEEBFF;color:#6D5BE8;border-radius:10px;transition:background .2s}
+nav button:hover{background:#F0EDFF;color:#4B3FE0;transform:translateX(2px)}
+nav button:hover svg{background:#E4DEFF;transform:none}
+nav button.on{background:#EAE6FF;color:#4535B5;box-shadow:none}
+nav button.on svg{background:#DCD5FF;color:#4535B5}
+nav .tag{font-size:12px;color:#8B8DAC;padding:12px 8px 4px;margin-top:auto;opacity:1}
+.nx{background:#F1EEFF;color:#3A356F;border:1px solid #E5E0FF;box-shadow:none}
+.nx small,.nx span{color:#77799A;opacity:1}
+.bd{background:#E3DFFF;color:#5744CE}
+main{max-width:none;width:100%;padding:28px clamp(20px,3vw,44px) 54px}
+@media(min-width:1500px){main{max-width:none}}
+.profile-shortcut{display:none}
+.profile-shortcut .av{width:30px;height:30px;border-radius:9px}
+.profile-shortcut{width:40px;height:40px;padding:4px}
+.profile-layout{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,1fr);gap:16px;align-items:start}
+.profile-main,.profile-side>.card,.backup-card{border-radius:18px;padding:22px;background:var(--sf);box-shadow:0 8px 24px -22px #4B3FE0}
+.profile-main h3,.profile-side h3,.backup-card h3{font-size:20px;letter-spacing:-.2px}
+.muted-intro{color:var(--mu);margin:7px 0 14px}
+.profile-id{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;background:var(--bg);border:1px solid var(--ln);margin:14px 0 18px}
+.profile-id b{display:block;font-size:15px}
+.profile-id small{display:block;color:var(--mu);margin-top:2px}
+.avatar-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:10px 0 8px}
+.avatar-toolbar b{font-size:14px}
+.upload-label,.restore-label{display:inline-flex;align-items:center}
+.avgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:8px 0 8px;max-width:none}
+.avpick{aspect-ratio:1;min-height:0;padding:0;overflow:hidden;border:1px solid var(--ln);border-radius:15px;background:var(--bg);transition:transform .18s,border-color .18s,box-shadow .18s}
+.avpick img{display:block;width:100%;height:100%;object-fit:cover}
+.avpick:hover{transform:translateY(-2px);border-color:#B8AEFF;background:var(--bg)}
+.avpick.sel{border:2px solid var(--ac);box-shadow:0 0 0 3px #8E84FF20;position:relative}
+.avatar-actions{margin:5px 0 10px}
+.profile-main label,.profile-side label{margin-top:13px}
+.profile-main input:not([type=file]){min-height:44px}
+.profile-save{margin-top:16px;padding:10px 17px}
+.profile-side{display:grid;gap:16px;min-width:0}
+.profile-side>.card{min-width:0}
+.profile-impact{background:var(--bg);border-radius:0 12px 12px 0;padding:10px 12px;margin:14px 0 0}
+.theme-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:8px 0 12px}
+.theme-option{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:66px;border:1px solid var(--ln);border-radius:13px;background:var(--bg);color:var(--ink);font:600 13px Figtree,sans-serif;cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
+.theme-option span{font-size:21px;line-height:1}
+.theme-option:hover{border-color:var(--ac);transform:translateY(-1px)}
+.theme-option.sel{background:linear-gradient(135deg,#6D5AF2,#8A62F5);border-color:transparent;color:#fff}
+.language-options{margin-top:8px}
+.backup-card{margin-top:16px}
+.backup-card .chips{margin-bottom:0}
+.top{gap:9px}
+@media(min-width:761px) and (max-width:1024px){
+ .app{grid-template-columns:82px minmax(0,1fr)}
+ nav{padding:18px 8px}
+ .brand{justify-content:center;padding:4px 0 14px}
+ .brand div,.ucopy,.ucard-arrow,.tag{display:none}
+ .ucard{justify-content:center;padding:7px 0;margin:2px 0 12px}
+ nav button{justify-content:center;padding:10px 8px;font-size:0}
+ nav button span{display:none}
+ nav button .bd{display:block;position:absolute;top:1px;right:3px}
+ main{padding:22px 22px 44px}
+}
+@media(max-width:900px){.profile-layout{grid-template-columns:minmax(0,1fr)}.profile-side{grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}}
+@media(max-width:760px){
+ .app{display:block}
+ nav{background:#FBFAFF;position:fixed;bottom:calc(10px + env(safe-area-inset-bottom,0px));left:10px;right:10px;top:auto;height:auto;flex-direction:row;justify-content:space-around;z-index:5;padding:6px;gap:2px;border:1px solid #E8E4FA;border-radius:20px;box-shadow:0 12px 30px -16px #34306A55}
+ nav button{flex:1;flex-direction:column;gap:2px;font-size:10px;padding:6px 4px;color:#666987}
+ nav button svg{width:18px;height:18px;padding:4px}
+ nav button.on{flex:1.25;background:#EAE6FF;color:#4535B5}
+ nav button span{display:block}
+ nav button .bd{position:absolute;top:1px;right:5px;margin:0;padding:0 5px;font-size:10px}
+ .brand,.tag{display:none}
+ .ucard,.nx{display:none}
+ .profile-shortcut{display:grid}
+ main{padding:18px 14px 110px}
+ .hd h2{font-size:24px}
+ .profile-main,.profile-side>.card,.backup-card{padding:17px;border-radius:16px}
+ .avgrid{grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+ .avpick{border-radius:12px}
+ .top{margin-bottom:14px}
+ .profile-side{grid-template-columns:minmax(0,1fr)}
+}
+
+
+/* Taktiva UI refinement: quieter navigation and pose-based mascot picker */
+.app{grid-template-columns:218px minmax(0,1fr)}
+nav{background:#FCFBFF;color:#292746;border-right:1px solid #EAE8F3;padding:18px 11px;gap:5px;box-shadow:none}
+.brand{padding:2px 8px 13px;gap:9px}
+.brand svg{width:36px;height:36px;background:#F0EDFF;border-radius:12px;padding:3px;box-shadow:none;animation:none}
+.brand b{font-size:21px;color:#292746}
+.brand small{font-size:11px;color:#85839C;opacity:1}
+.ucard{min-height:58px;display:flex;align-items:center;gap:10px;margin:2px 0 12px;padding:8px 9px;background:#F3F0FF;border:1px solid #E9E4FF;border-radius:13px;color:#292746;backdrop-filter:none}
+.ucard:hover{background:#EEEAFF;border-color:#DCD4FF;transform:none}
+.ucard .av{width:42px;height:42px;border-radius:12px;background:#E9E4FF}
+.ucard .av.mascot{background:transparent}
+.ucopy{min-width:0;flex:1}
+.ucopy b{font-size:13px;font-weight:700;color:#292746}
+.ucopy small{font-size:11px;color:#85839C}
+.ucard-arrow{font-size:19px;color:#8B80D8}
+nav button{position:relative;min-height:42px;padding:9px 10px;gap:10px;border-radius:10px;color:#686781;font-size:13px;font-weight:600}
+nav button svg{width:18px;height:18px;padding:0;background:transparent;color:#817BA5;border-radius:0}
+nav button:hover{background:#F3F1FA;color:#4B3FE0;transform:none}
+nav button:hover svg{background:transparent;transform:none}
+nav button.on{background:#F0EDFF;color:#4939B8;box-shadow:none}
+nav button.on::before{content:'';position:absolute;left:0;top:9px;bottom:9px;width:3px;border-radius:0 4px 4px 0;background:#6A59E8}
+nav button.on svg{background:transparent;color:#5948D1}
+nav .tag{padding:10px 8px 2px;margin-top:auto;color:#9996AD;font-size:11px}
+.bd{background:#EAE6FF;color:#5A4AC5;font-size:10px}
+main{padding:26px clamp(20px,3vw,42px) 52px}
+.profile-layout{gap:14px}
+.profile-main,.profile-side>.card,.backup-card{box-shadow:0 3px 14px -12px #31277D;border-color:var(--ln)}
+.avgrid{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:10px 0;max-width:520px}
+.avpick{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;aspect-ratio:1/1.12;min-width:0;padding:4px 3px 5px;border:1px solid #EAE7F4;border-radius:13px;background:#FBFAFF;overflow:hidden}
+.avpick img{display:block;width:100%;height:calc(100% - 15px);object-fit:contain;transition:transform .2s}
+.avpick span{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 9px/1.1 Figtree,system-ui,sans-serif;color:#77738F}
+.avpick:hover{transform:translateY(-2px);border-color:#C9C0FF;background:#F7F5FF}
+.avpick:hover img{transform:translateY(-2px) scale(1.04)}
+.avpick.sel{border:2px solid #7868EC;background:#F1EEFF;box-shadow:0 0 0 2px #7868EC18}
+.avpick.sel span{color:#5142C2}
+.profile-id{background:#FAF9FE}
+@media(min-width:761px) and (max-width:1024px){
+ .app{grid-template-columns:74px minmax(0,1fr)}
+ nav{padding:17px 7px}
+ .brand{justify-content:center;padding:3px 0 13px}
+ .brand div,.ucopy,.ucard-arrow,.tag{display:none}
+ .ucard{justify-content:center;padding:7px 0;margin:2px 0 12px}
+ nav button{justify-content:center;padding:10px 7px;font-size:0}
+ nav button span{display:none}
+ nav button .bd{display:block;position:absolute;top:1px;right:2px}
+ main{padding:22px 20px 42px}
+}
+@media(max-width:760px){
+ nav{background:#FCFBFF;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:6px;border:1px solid #EAE7F4;border-radius:18px;box-shadow:0 10px 28px -18px #29234E99}
+ nav button{min-height:42px;padding:7px 4px;gap:3px;border-radius:12px;font-size:10px}
+ nav button.on::before{left:50%;top:auto;bottom:2px;width:16px;height:2px;transform:translateX(-50%);border-radius:2px}
+ nav button svg{width:18px;height:18px}
+ .profile-shortcut{display:grid}
+ .avgrid{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+ .avpick{border-radius:11px}
+ main{padding:18px 14px 108px}
+}
+@media(prefers-reduced-motion:reduce){.avpick img{transition:none}}
+
 </style></head><body>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="logo" viewBox="0 0 48 48"><polygon points="8,20 9,5 22,11" fill="#4B3FE0" stroke="#4B3FE0" stroke-width="3" stroke-linejoin="round"/><polygon points="40,20 39,5 26,11" fill="#4B3FE0" stroke="#4B3FE0" stroke-width="3" stroke-linejoin="round"/><polygon points="11.5,14 11.8,9.2 16.4,11.6" fill="#FF9DB5" stroke="#FF9DB5" stroke-width="1.4" stroke-linejoin="round"/><polygon points="36.5,14 36.2,9.2 31.6,11.6" fill="#FF9DB5" stroke="#FF9DB5" stroke-width="1.4" stroke-linejoin="round"/><rect x="5" y="10" width="38" height="34" rx="16" fill="#4B3FE0"/><path d="M20.5 13.2l2.6 2.6 5-5.2" fill="none" stroke="#FFC857" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="18" width="28" height="21" rx="10" fill="#F3F1FF"/><ellipse cx="18" cy="27.5" rx="3.2" ry="3.8" fill="#171A3A"/><ellipse cx="30" cy="27.5" rx="3.2" ry="3.8" fill="#171A3A"/><circle cx="19.2" cy="26" r="1.2" fill="#fff"/><circle cx="31.2" cy="26" r="1.2" fill="#fff"/><ellipse cx="13.4" cy="32.6" rx="2.6" ry="1.7" fill="#FF9DB5"/><ellipse cx="34.6" cy="32.6" rx="2.6" ry="1.7" fill="#FF9DB5"/><path d="M21 32.2q1.5 2.2 3 0q1.5 2.2 3 0" fill="none" stroke="#171A3A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -164,17 +325,23 @@ const $=s=>document.querySelector(s),dlg=$('#dlg');let K='';
 const ic=n=>`<svg class="i"><use href="#${n}"/></svg>`;
 const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-const AVATARS=['🐱','😺','😸','😻','😽','🙀','🐰','🐻','🐼','🦊','🐸','🐧','🐣','🐨','🐹','🐯','🐶','🐵','🦄','🐙','🐢','🐥','🦋','🐮','🐷','🐤','🐲','👻','🌸','⭐','🍓','🍡'];
-function avatarHTML(big=false){const a=S.prefs.avatar||'',cls='av'+(big?' big':'');if(/^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(a))return `<span class='${cls} photo'><img src='${a}' alt='Avatar profil'></span>`;if(AVATARS.includes(a))return `<span class='${cls} emoji' role='img' aria-label='Avatar profil'>${e(a)}</span>`;return `<span class='${cls}'>${e(((S.prefs.name||'?').trim()[0]||'?').toUpperCase())}</span>`}
-function setAvatar(i){S.prefs.avatar=i<0?'':(AVATARS[i]||'');render()}
+
+const MASCOTS=Array.from({length:15},(_,i)=>'mascot-'+String(i+1).padStart(2,'0'));
+const MASCOT_POSES=[['Duduk santai','Chill sit'],['Melambai','Waving'],['Membawa pensil','Pencil pal'],['Membaca buku','Book buddy'],['Mengantuk','Sleepy'],['Melompat','Jumping'],['Berlari','Running'],['Membawa catatan','Note taker'],['Juara','Champion'],['Membawa hati','Heart hug'],['Membawa kalender','Calendar pal'],['Merawat tanaman','Plant friend'],['Menari','Dancing'],['Sedang berpikir','Thinking'],['Siap belajar','Ready to study']];
+const OLD_AVATARS=['🐱','😺','😸','😻','😽','🙀','🐰','🐻','🐼','🦊','🐸','🐧','🐣','🐨','🐹','🐯','🐶','🐵','🦄','🐙','🐢','🐥','🦋','🐮','🐷','🐤','🐲','👻','🌸','⭐','🍓','🍡'];
+function avatarHTML(big=false){const a=S.prefs.avatar||'mascot-01',cls='av'+(big?' big':'');if(/^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(a))return `<span class='${cls} photo'><img src='${a}' alt='Avatar profil'></span>`;if(a==='initials')return `<span class='${cls} initials'>${e(((S.prefs.name||'?').trim()[0]||'?').toUpperCase())}</span>`;if(MASCOTS.includes(a))return `<span class='${cls} mascot'><img src='/mascots/${a}.svg' alt='Maskot Taktiva'></span>`;if(OLD_AVATARS.includes(a))return `<span class='${cls} emoji' role='img' aria-label='Avatar profil'>${e(a)}</span>`;return `<span class='${cls} mascot'><img src='/mascots/mascot-01.svg' alt='Maskot Taktiva'></span>`}
+function setAvatar(i){S.prefs.avatar=i<0?'initials':(MASCOTS[i]||'mascot-01');render()}
 function avatarUpload(input){const file=input.files&&input.files[0];if(!file)return;const allowed=['image/jpeg','image/png','image/webp'];if(!allowed.includes(file.type)){alert(T('Format foto tidak didukung. Gunakan JPG, PNG, atau WebP.','Unsupported photo format. Use JPG, PNG, or WebP.'));input.value='';return}if(file.size>8*1024*1024){alert(T('Ukuran foto maksimal 8 MB.','Photo must be 8 MB or smaller.'));input.value='';return}const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{try{const side=Math.min(img.naturalWidth,img.naturalHeight);if(!side)throw new Error('invalid image');const canvas=document.createElement('canvas');canvas.width=256;canvas.height=256;const ctx=canvas.getContext('2d');ctx.drawImage(img,(img.naturalWidth-side)/2,(img.naturalHeight-side)/2,side,side,0,0,256,256);S.prefs.avatar=canvas.toDataURL('image/jpeg',0.76);render()}catch(x){alert(T('Foto tidak bisa diproses. Coba foto lain.','Could not process this photo. Try another image.'))}};img.onerror=()=>alert(T('Foto tidak bisa dibuka. Coba foto lain.','Could not open this photo. Try another image.'));img.src=reader.result};reader.onerror=()=>alert(T('Foto gagal dibaca.','Could not read the photo.'));reader.readAsDataURL(file);input.value=''}
+function chooseTheme(mode){if(mode==='auto'){delete document.documentElement.dataset.theme;try{localStorage.removeItem(TK)}catch(x){}}else{document.documentElement.dataset.theme=mode;try{localStorage.setItem(TK,mode)}catch(x){}}tgi();render()}
+function saveProfile(){render()}
+
 
 const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const pd=s=>new Date(s+'T00:00:00'),add=(s,n)=>{const d=pd(s);d.setDate(d.getDate()+n);return ymd(d)};
 const TODAY=ymd(new Date()),dd=s=>Math.round((pd(s)-pd(TODAY))/864e5);
 const fd=s=>pd(s).toLocaleDateString(L=='en'?'en-US':'id-ID',{weekday:'short',day:'numeric',month:'short'});
 const RL=['Rendah','Sedang','Tinggi','Kritis'];
-const fresh=()=>({prefs:{name:'Mahasiswa',level:'Mahasiswa',hours:4,time:'malam',buffer:1,avatar:''},tasks:[],id:10}),UK='taskmate.users',SK='taskmate.session',TK='taskmate.theme';
+const fresh=()=>({prefs:{name:'Mahasiswa',level:'Mahasiswa',hours:4,time:'malam',buffer:1,avatar:'mascot-01'},tasks:[],id:10}),UK='taskmate.users',SK='taskmate.session',TK='taskmate.theme';
 let em='',reg=false,S=fresh(),view='dash',sel=null,editId=null,cm=new Date();
 const users=()=>{try{return JSON.parse(localStorage.getItem(UK))||{}}catch(x){return{}}};
 const hash=async p=>{try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('tm:'+p));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(x){return btoa(unescape(encodeURIComponent(p)))}};
@@ -226,10 +393,10 @@ const when=d=>L=='en'?(d<0?`${-d} days late`:d==0?'today':d==1?'tomorrow':`in ${
 const pill=r=>`<span class="pill k${r}">${T('Risiko ','Risk ')}${[T('Rendah','Low'),T('Sedang','Medium'),T('Tinggi','High'),T('Kritis','Critical')][r]}</span>`;
 const H=h=>{const n=(Math.round(h*10)/10).toString();return L=='en'?n+' h':n.replace('.',',')+' jam'};
 // ===== Views =====
-const NAV=[['dash','home','Dashboard'],['tasks','list','Tugas'],['cal','cal','Kalender'],['prog','chart','Progres'],['plan','route','Planner'],['rescue','bolt','Rescue'],['me','user','Profil']];
-function nav(){$('#nav').innerHTML=`<div class="brand"><svg><use href="#logo"/></svg><b>Taktiva</b></div>`+NAV.map(n=>`<button class="${view==n[0]?'on':''}" onclick="go('${n[0]}')" aria-label="${n[2]}">${ic(n[1])}${n[2]}</button>`).join('')+`<div class="tag">Don’t Just Track Deadlines. Stay Ahead of Them.</div>`}
+const NAV=[['dash','home','Dashboard'],['tasks','list','Tugas'],['cal','cal','Kalender'],['prog','chart','Progres'],['plan','route','Planner'],['rescue','bolt','Rescue']];
+// Navigation is rendered by the profile-aware nav() implementation below.
 function go(v){view=v;const m=$('#v');m.classList.add('an');render();scrollTo(0,0);setTimeout(()=>m.classList.remove('an'),800)}
-function render(){nav();$('#v').innerHTML=`<div class="top"><span class="sy" id="sy" onclick="pull();push()" role="button"></span><button class="ib tg" onclick="setTheme()" aria-label="Ganti tema terang atau gelap"></button><button class="ib lg" onclick="setLang()" aria-label="Ganti bahasa"></button><button class="btn g s" onclick="logout()">${ic('out')}Keluar</button></div>`+V[view]();tgi();applyLang();save()}
+function render(){nav();$('#v').innerHTML=`<div class="top"><span class="sy" id="sy" onclick="pull();push()" role="button"></span><button class="ib profile-shortcut" onclick="go('me')" aria-label="Profil">${avatarHTML()}</button><button class="ib tg" onclick="setTheme()" aria-label="Ganti tema terang atau gelap"></button><button class="ib lg" onclick="setLang()" aria-label="Ganti bahasa"></button><button class="btn g s" onclick="logout()">${ic('out')}Keluar</button></div>`+V[view]();tgi();applyLang();save()}
 const hd=(t,p,b='')=>`<div class="hd"><div><h2>${t}</h2><p>${p}</p></div>${b}</div>`;
 const addBtn=`<button class="btn" onclick="openTask()">${ic('plus')}Tambah tugas</button>`;
 const taskRow=(a,extra='')=>`<div class="row" data-pid="${a.t.id}"><div class="m"><b>${e(a.t.title)}</b><small>${e(a.t.course)} · ${impTag(a.t)} · ${fd(a.t.due)} (${when(dd(a.t.due))}) · sisa ${H(a.rem)}</small></div>${extra}${pill(a.risk)}</div>`;
@@ -343,8 +510,8 @@ return hd('Deadline Rescue Mode',T('Bukan cuma pengingat. Di sini kita atur ulan
 document.addEventListener('click',ev=>{const g=ev.target,nb=g.closest('nav [data-v]');if(nb)return go(nb.dataset.v);if(g.closest('button,a,input,select,textarea,summary,details,label'))return;const dc=g.closest('[data-day]');if(dc)return pDay(dc.dataset.day);const r=g.closest('[data-pid]');if(r)pGo(+r.dataset.pid)});
 let cd=TODAY;
 const sched=t=>{const cap=+S.prefs.hours||1,P=plan(t),R=[];let end=add(t.due,-(+S.prefs.buffer||0));for(let i=P.length-1;i>=0;i--){const dy=Math.max(1,Math.ceil(P[i].h/cap)),s=add(end,-(dy-1));R[i]={s,e:end,dy,p:P[i],i};end=add(s,-1)}return R};
-function nav(){const A=analyze(),R=A.filter(a=>a.risk>=2).length,nx=A.slice().sort((a,b)=>dd(a.t.due)-dd(b.t.due))[0],bd={tasks:A.length,rescue:R};
-$('#nav').innerHTML=`<div class='brand'><svg><use href='#logo'/></svg><div><b>Taktiva</b><small>${T('Teman tugasmu','Your task buddy')}</small></div></div><button type='button' class='ucard' onclick='go("me")' aria-label='Buka profil'>${avatarHTML()}<div><b>${e(S.prefs.name)}</b><small>${e(S.prefs.level)}</small></div></button>`+NAV.map(n=>`<button data-v='${n[0]}' class='${view==n[0]?'on':''}' aria-label='${n[2]}'>${ic(n[1])}<span>${n[2]}</span>${bd[n[0]]?`<i class='bd'>${bd[n[0]]}</i>`:''}</button>`).join('')+(nx?`<div class='nx' data-pid='${nx.t.id}'><small>${T('Deadline terdekat','Next deadline')}</small><b>${e(nx.t.title)}</b><span>${when(dd(nx.t.due))}</span></div>`:'')+`<div class='tag'>Don’t Just Track Deadlines. Stay Ahead of Them.</div>`}
+function nav(){const A=analyze(),R=A.filter(a=>a.risk>=2).length,bd={tasks:A.length,rescue:R};
+$('#nav').innerHTML=`<div class='brand'><svg><use href='#logo'/></svg><div><b>Taktiva</b><small>${T('Teman tugasmu','Your task buddy')}</small></div></div><button type='button' class='ucard' onclick='go("me")' aria-label='Buka profil'>${avatarHTML()}<div class='ucopy'><b>${e(S.prefs.name)}</b><small>${e(S.prefs.level)}</small></div><span class='ucard-arrow'>›</span></button>`+NAV.map(n=>`<button data-v='${n[0]}' class='${view==n[0]?'on':''}' aria-label='${n[2]}'>${ic(n[1])}<span>${n[2]}</span>${bd[n[0]]?`<i class='bd'>${bd[n[0]]}</i>`:''}</button>`).join('')+`<div class='tag'><span>${T('Langkah kecil. Progres besar.','Small steps. Big progress.')}</span></div>`}
 function pDay(d){cd=d;render()}
 function pToday(){cm=new Date();cd=TODAY;render()}
 function pStage(tid,i){sel=tid;pDone(i)}
@@ -363,19 +530,40 @@ return hd('Academic Calendar',T('Klik tanggal untuk melihat deadline dan tahap p
 const PK=['time','buffer','level'],PV=[['pagi','siang','sore','malam'],[0,1,2,3],['Mahasiswa','SMA/SMK']];
 function pfi(k,i){S.prefs[PK[k]]=PV[k][i];render()}
 const pnm=v=>{S.prefs.name=v.trim()||S.prefs.name;render()},phr=v=>{S.prefs.hours=+v||1;render()},pDelAll=()=>{if(confirm(T('Hapus semua data?','Delete all data?'))){S.tasks=[];render()}};
-V.me=function(){const p=S.prefs,A=analyze(),dn=S.tasks.filter(t=>t.progress>=100).length,hr=S.tasks.reduce((s,t)=>s+t.est*t.progress/100,0),rk=A.filter(a=>a.risk>=2).length;
+V.me=function(){const p=S.prefs,A=analyze(),rk=A.filter(a=>a.risk>=2).length;
 const ch=(k,lab)=>PV[k].map((v,i)=>`<button class='btn s ${p[PK[k]]==v?'':'g'}' onclick='pfi(${k},${i})'>${lab[i]}</button>`).join('');
-return hd(T('Profil & Preferensi Belajar','Profile & Study Preferences'),T('Atur gaya belajarmu. Semua hitungan risiko dan jadwal mengikuti pengaturan ini.','Set your study style. All risk and schedule calculations follow these settings.'))+
-`<div class='grid g2'><div class='card'><h3>${T('Tentang kamu','About you')}</h3>
-<label>${T('Avatar profil','Profile avatar')}</label><p style='color:var(--mu);margin:4px 0'>${T('Pilih karakter imut atau unggah foto sendiri. Avatar ini juga tampil di menu samping.','Choose a cute character or upload your own photo. It also appears in the sidebar.')}</p>
-<div class='avgrid'>${AVATARS.map((v,i)=>`<button type='button' class='avpick ${p.avatar===v?'sel':''}' onclick='setAvatar(${i})' title='${T('Pilih avatar','Choose avatar')} ${i+1}' aria-label='${T('Pilih avatar','Choose avatar')} ${i+1}'>${e(v)}</button>`).join('')}</div>
-<div class='chips' style='margin-bottom:14px'><label class='btn g s' style='margin:0;cursor:pointer'>${T('Unggah foto','Upload photo')}<input type='file' accept='image/jpeg,image/png,image/webp' hidden onchange='avatarUpload(this)'></label><button type='button' class='btn g s' onclick='setAvatar(-1)'>${T('Pakai inisial','Use initials')}</button></div>
-<label for='n'>${T('Nama','Name')}</label><input id='n' value='${e(p.name)}' onchange='pnm(this.value)'><label>${T('Jenjang','Level')}</label><div class='chips'>${ch(2,[T('Mahasiswa','University student'),'SMA/SMK'])}</div>
-<h3 style='margin-top:18px'>${T('Tampilan & akun','Appearance & account')}</h3><div class='chips'><button class='btn g s' onclick='setTheme()'>${T('Ganti tema','Switch theme')}</button><button class='btn g s' onclick='setLang()'>${T('Ganti bahasa','Change language')}</button><button class='btn d s' onclick='logout()'>${ic('out')}${T('Keluar','Sign out')}</button></div></div>
-<div class='card'><h3>${T('Ritme belajar','Study rhythm')}</h3><label for='hs'>${T('Jam belajar per hari','Study hours per day')}: <b id='hv'>${p.hours}</b></label><input id='hs' type='range' min='1' max='12' step='0.5' value='${p.hours}' oninput='hv.textContent=this.value' onchange='phr(this.value)'>
-<label>${T('Waktu belajar terbaik','Best study time')}</label><div class='chips'>${ch(0,[T('Pagi','Morning'),T('Siang','Afternoon'),T('Sore','Late afternoon'),T('Malam','Night')])}</div><label>${T('Jeda aman sebelum deadline','Safety buffer before deadline')}</label><div class='chips'>${ch(1,PV[1].map(v=>T(`${v} hari`,`${v} day(s)`)))}</div>
-<div class='rs' style='border-color:var(--ac)'><b>${T('Dampaknya','What it means')}</b><br>${T(`Kamu punya sekitar ${H(p.hours*7)} per minggu. Dengan ritme ini, ${rk} tugas masuk kategori berisiko.`,`You have about ${H(p.hours*7)} per week. At this pace, ${rk} task(s) are at risk.`)}</div></div></div>
-<div class='card' style='margin-top:14px'><h3>${T('Cadangan data','Data backup')}</h3><p style='color:var(--mu)'>${T('Data tersimpan di browser ini. Unduh cadangan JSON, atau pulihkan dari file cadangan.','Your data is stored in this browser. Download a JSON backup, or restore from a backup file.')}</p><div class='chips'><button class='btn' onclick='exp()'>${T('Unduh cadangan','Download backup')}</button><label class='btn g' style='margin:0;cursor:pointer'>${T('Pulihkan','Restore')}<input type='file' accept='.json' hidden onchange='imp(this)'></label><button class='btn d' onclick='pDelAll()'>${T('Hapus data','Delete data')}</button></div></div>`};
+let themeMode='auto';try{themeMode=localStorage.getItem(TK)||'auto'}catch(x){}
+return hd(T('Profil & Preferensi Belajar','Profile & Study Preferences'),T('Personalisasi profil dan gaya belajarmu. Pengaturan ini memengaruhi jadwal dan perhitungan risiko.','Customize your profile and study style. These settings shape your schedule and risk calculations.'))+
+`<div class='profile-layout'>
+<section class='card profile-main'>
+ <h3>${T('Profil','Profile')}</h3><p class='muted-intro'>${T('Pilih maskot Taktiva favorit atau unggah foto sendiri.','Choose your favorite Taktiva mascot or upload your own photo.')}</p>
+ <div class='profile-id'>${avatarHTML(true)}<div><b>${e(p.name||T('Namamu','Your name'))}</b><small>${e(p.level||'')}</small></div></div>
+ <div class='avatar-toolbar'><b>${T('Maskot Taktiva','Taktiva mascots')}</b><label class='btn g s upload-label'>${T('Unggah foto','Upload photo')}<input type='file' accept='image/jpeg,image/png,image/webp' hidden onchange='avatarUpload(this)'></label></div>
+ <div class='avgrid'>${MASCOTS.map((v,i)=>`<button type='button' class='avpick ${p.avatar===v?'sel':''}' onclick='setAvatar(${i})' title='${T(MASCOT_POSES[i][0],MASCOT_POSES[i][1])}' aria-label='${T('Pilih maskot','Choose mascot')}: ${T(MASCOT_POSES[i][0],MASCOT_POSES[i][1])}'><img src='/mascots/${v}.svg' alt='${T(MASCOT_POSES[i][0],MASCOT_POSES[i][1])}' loading='lazy'><span>${T(MASCOT_POSES[i][0],MASCOT_POSES[i][1])}</span></button>`).join('')}</div>
+ <div class='chips avatar-actions'><button type='button' class='btn g s' onclick='setAvatar(-1)'>${T('Pakai inisial','Use initials')}</button></div>
+ <label for='n'>${T('Nama','Name')}</label><input id='n' value='${e(p.name)}' onchange='pnm(this.value)'>
+ <label>${T('Jenjang','Level')}</label><div class='chips'>${ch(2,[T('Mahasiswa','University student'),'SMA/SMK'])}</div>
+ <button type='button' class='btn profile-save' onclick='saveProfile()'>${ic('check')}${T('Simpan profil','Save profile')}</button>
+</section>
+<div class='profile-side'>
+ <section class='card'>
+  <h3>${T('Ritme belajar','Study rhythm')}</h3><label for='hs'>${T('Jam belajar per hari','Study hours per day')}: <b id='hv'>${p.hours}</b></label><input id='hs' type='range' min='1' max='12' step='0.5' value='${p.hours}' oninput='hv.textContent=this.value' onchange='phr(this.value)'>
+  <label>${T('Waktu belajar terbaik','Best study time')}</label><div class='chips'>${ch(0,[T('Pagi','Morning'),T('Siang','Afternoon'),T('Sore','Late afternoon'),T('Malam','Night')])}</div>
+  <label>${T('Jeda aman sebelum deadline','Safety buffer before deadline')}</label><div class='chips'>${ch(1,PV[1].map(v=>T(`${v} hari`,`${v} day(s)`)))}</div>
+  <div class='rs profile-impact' style='border-color:var(--ac)'><b>${T('Dampaknya','What it means')}</b><br>${T(`Kamu punya sekitar ${H(p.hours*7)} per minggu. Dengan ritme ini, ${rk} tugas masuk kategori berisiko.`,`You have about ${H(p.hours*7)} per week. At this pace, ${rk} task(s) are at risk.`)}</div>
+ </section>
+ <section class='card appearance-card'>
+  <h3>${T('Tampilan & bahasa','Appearance & language')}</h3><p class='muted-intro'>${T('Atur tampilan Taktiva sesuai kenyamananmu.','Make Taktiva feel comfortable for you.')}</p>
+  <label>${T('Tema','Theme')}</label><div class='theme-options'>
+   <button type='button' class='theme-option ${themeMode==='auto'?'sel':''}' onclick='chooseTheme("auto")'><span>◐</span>${T('Otomatis','Auto')}</button>
+   <button type='button' class='theme-option ${themeMode==='light'?'sel':''}' onclick='chooseTheme("light")'><span>☼</span>${T('Terang','Light')}</button>
+   <button type='button' class='theme-option ${themeMode==='dark'?'sel':''}' onclick='chooseTheme("dark")'><span>☾</span>${T('Gelap','Dark')}</button>
+  </div>
+  <label>${T('Bahasa','Language')}</label><div class='chips language-options'><button class='btn s ${L==='en'?'':'g'}' onclick='if(L!=="en")setLang()'>English</button><button class='btn s ${L==='id'?'':'g'}' onclick='if(L!=="id")setLang()'>Bahasa Indonesia</button></div>
+ </section>
+</div>
+</div>
+<div class='card backup-card'><h3>${T('Cadangan data','Data backup')}</h3><p class='muted-intro'>${T('Unduh cadangan JSON atau pulihkan data dari file cadangan.','Download a JSON backup or restore from a backup file.')}</p><div class='chips'><button class='btn s' onclick='exp()'>${T('Unduh cadangan','Download backup')}</button><label class='btn g s restore-label'>${T('Pulihkan','Restore')}<input type='file' accept='.json' hidden onchange='imp(this)'></label><button class='btn d s' onclick='pDelAll()'>${T('Hapus data','Delete data')}</button></div></div>`};
 // Tautan balik dari Planner
 function calTo(id){const t=S.tasks.find(x=>x.id==id),d=pd(t.due);cm=new Date(d.getFullYear(),d.getMonth(),1);cd=t.due;go('cal')}
 const goR=()=>go('rescue'),_pl=V.plan;
