@@ -102,3 +102,13 @@ Lalu daftar akun di satu perangkat, masuk di perangkat lain: tugasmu sama.
 - Levels, daily XP summaries, and six achievement badges are shown inside Progress and as a compact Dashboard card.
 - Gamification data is stored in account preferences so it follows the existing cloud sync and backup flow.
 - Rest days are not penalized; streaks simply pause and resume only when activity is recorded on consecutive days.
+
+
+## Advanced Analytics v9
+- Adds task completion, overdue, estimated-work and remaining-work summaries.
+- Adds weighted progress by course.
+- Adds an optional manual study-session logger with start/finish controls.
+- Stores completed session duration and start hour in account preferences for cloud sync.
+- Displays a seven-day study-time chart and start-time patterns only when enough sessions have been logged.
+- Does not infer historical task completion dates or unrecorded study time. Historical analytics limitations are disclosed in the UI.
+- Active study timer is stored per browser/device; completed sessions are synced through the existing account preference sync.

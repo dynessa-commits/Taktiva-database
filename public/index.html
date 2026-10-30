@@ -447,6 +447,39 @@ main{padding:26px clamp(20px,3vw,42px) 52px}
  .gm-badge:not(.locked):hover{transform:translateY(-2px);border-color:var(--ac)}
 }
 
+
+/* Taktiva v9: advanced analytics */
+.an-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin:18px 0 12px}
+.an-head p{color:var(--mu);font-size:12px;margin:5px 0 0}
+.an-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0}
+.an-kpi{background:var(--sf);border:1px solid var(--ln);border-radius:13px;padding:13px;min-width:0}
+.an-kpi strong{display:block;font:800 23px 'Bricolage Grotesque';letter-spacing:-.5px}
+.an-kpi span{display:block;color:var(--mu);font-size:10px;margin-top:2px}
+.an-two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.an-card{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:15px;min-width:0}
+.an-card h3{font-size:15px;margin-bottom:5px}
+.an-sub{font-size:11px;color:var(--mu);margin-bottom:12px}
+.an-bars{display:flex;align-items:flex-end;gap:8px;height:116px;padding-top:8px}
+.an-barcol{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;justify-content:flex-end}
+.an-bartrack{height:86px;width:100%;max-width:30px;background:var(--bg);border-radius:7px;display:flex;align-items:flex-end;overflow:hidden}
+.an-bartrack i{display:block;width:100%;background:var(--ac);border-radius:7px 7px 0 0;min-height:0}
+.an-barcol small{font-size:9px;color:var(--mu)}
+.an-barcol b{font-size:9px;font-weight:700}
+.an-course{margin:12px 0}
+.an-course-head{display:flex;justify-content:space-between;gap:8px;font-size:11px;margin-bottom:5px}
+.an-course-head span:last-child{font-weight:700}
+.an-track{height:7px;background:var(--bg);border-radius:9px;overflow:hidden}
+.an-track i{height:100%;display:block;background:var(--ac);border-radius:9px}
+.an-session{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:13px;border:1px solid var(--ln);background:var(--bg);border-radius:12px;margin-top:10px}
+.an-session-copy{min-width:0;flex:1}
+.an-session-copy b{display:block;font-size:12px}
+.an-session-copy small{display:block;color:var(--mu);font-size:10px;margin-top:2px}
+.an-actions{display:flex;gap:7px;flex-wrap:wrap}
+.an-empty{padding:15px;border:1px dashed var(--ln);border-radius:12px;color:var(--mu);font-size:11px;text-align:center}
+.an-foot{font-size:10px;line-height:1.5;color:var(--mu);margin:12px 0 0}
+@media(max-width:900px){.an-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.an-two{grid-template-columns:1fr}.an-card{padding:13px}.an-kpi{padding:11px}.an-kpi strong{font-size:20px}.an-head{margin-top:14px}}
+
 </style></head><body>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="logo" viewBox="0 0 48 48"><polygon points="8,20 9,5 22,11" fill="#4B3FE0" stroke="#4B3FE0" stroke-width="3" stroke-linejoin="round"/><polygon points="40,20 39,5 26,11" fill="#4B3FE0" stroke="#4B3FE0" stroke-width="3" stroke-linejoin="round"/><polygon points="11.5,14 11.8,9.2 16.4,11.6" fill="#FF9DB5" stroke="#FF9DB5" stroke-width="1.4" stroke-linejoin="round"/><polygon points="36.5,14 36.2,9.2 31.6,11.6" fill="#FF9DB5" stroke="#FF9DB5" stroke-width="1.4" stroke-linejoin="round"/><rect x="5" y="10" width="38" height="34" rx="16" fill="#4B3FE0"/><path d="M20.5 13.2l2.6 2.6 5-5.2" fill="none" stroke="#FFC857" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="18" width="28" height="21" rx="10" fill="#F3F1FF"/><ellipse cx="18" cy="27.5" rx="3.2" ry="3.8" fill="#171A3A"/><ellipse cx="30" cy="27.5" rx="3.2" ry="3.8" fill="#171A3A"/><circle cx="19.2" cy="26" r="1.2" fill="#fff"/><circle cx="31.2" cy="26" r="1.2" fill="#fff"/><ellipse cx="13.4" cy="32.6" rx="2.6" ry="1.7" fill="#FF9DB5"/><ellipse cx="34.6" cy="32.6" rx="2.6" ry="1.7" fill="#FF9DB5"/><path d="M21 32.2q1.5 2.2 3 0q1.5 2.2 3 0" fill="none" stroke="#171A3A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -1092,6 +1125,128 @@ const _taktivaDashBeforeGM=V.dash;
 V.dash=function(){return _taktivaDashBeforeGM()+gmDashboardCard()};
 const _taktivaProgBeforeGM=V.prog;
 V.prog=function(){return _taktivaProgBeforeGM()+gmAchievementsPanel()};
+
+
+// ===== Advanced Analytics v9 =====
+// Analytics only uses stored task estimates/progress and explicitly recorded study sessions.
+// It does not infer historical completion dates or claim to know study hours that were never logged.
+const _gmEnsureV9=gmEnsure;
+gmEnsure=function(){
+ const g=_gmEnsureV9();
+ g.sessions=Array.isArray(g.sessions)?g.sessions:[];
+ return g;
+};
+function studyActiveKey(){return 'taktiva.study.active.'+(em||'local')}
+function getActiveStudySession(){
+ try{const x=JSON.parse(localStorage.getItem(studyActiveKey())||'null');return x&&x.startedAt?x:null}catch(e){return null}
+}
+function startStudySession(){
+ const active=getActiveStudySession();
+ if(active){toast(T('Una sesi belajar masih berjalan.','A study session is already running.'));return}
+ const now=new Date();
+ try{localStorage.setItem(studyActiveKey(),JSON.stringify({startedAt:now.toISOString(),date:ymd(now),startHour:now.getHours()}))}
+ catch(e){alert(T('Penyimpanan sesi tidak tersedia di browser ini.','Session storage is unavailable in this browser.'));return}
+ render();
+ toast(T('Sesi belajar dimulai. Semangat!','Study session started. You’ve got this!'));
+}
+function stopStudySession(){
+ const active=getActiveStudySession();
+ if(!active)return;
+ const now=new Date(),started=new Date(active.startedAt);
+ let minutes=Math.max(1,Math.round((now-started)/60000));
+ if(!Number.isFinite(minutes)||minutes>720){
+  if(!confirm(T('Sesi tercatat lebih dari 12 jam. Simpan sebagai maksimal 12 jam?','This session is over 12 hours. Save it as a maximum of 12 hours?')))return;
+  minutes=720;
+ }
+ const g=gmEnsure();
+ g.sessions.push({
+  startedAt:active.startedAt,endedAt:now.toISOString(),
+  date:active.date||ymd(started),startHour:Number.isFinite(active.startHour)?active.startHour:started.getHours(),
+  minutes
+ });
+ g.sessions=g.sessions.slice(-500);
+ try{localStorage.removeItem(studyActiveKey())}catch(e){}
+ save();render();
+ toast(T(`Sesi belajar ${minutes} menit tersimpan.`,`Saved a ${minutes}-minute study session.`));
+}
+function discardStudySession(){
+ if(!getActiveStudySession())return;
+ if(!confirm(T('Batalkan sesi yang sedang berjalan tanpa menyimpan durasinya?','Discard the active session without saving its duration?')))return;
+ try{localStorage.removeItem(studyActiveKey())}catch(e){}
+ render();
+}
+function analyticsData(){
+ const tasks=Array.isArray(S.tasks)?S.tasks:[];
+ const today=ymd(new Date()),g=gmEnsure();
+ const total=tasks.length,done=tasks.filter(t=>(+t.progress||0)>=100).length;
+ const overdue=tasks.filter(t=>(+t.progress||0)<100&&dd(t.due)<0).length;
+ const due7=tasks.filter(t=>(+t.progress||0)<100&&dd(t.due)>=0&&dd(t.due)<=7).length;
+ const estimated=tasks.reduce((s,t)=>s+(Math.max(0,+t.est||0)),0);
+ const completedHours=tasks.reduce((s,t)=>s+(Math.max(0,+t.est||0)*Math.max(0,Math.min(100,+t.progress||0))/100),0);
+ const remaining=tasks.reduce((s,t)=>s+(Math.max(0,+t.est||0)*(1-Math.max(0,Math.min(100,+t.progress||0))/100)),0);
+ const sessions=g.sessions.filter(s=>Number.isFinite(+s.minutes)&&+s.minutes>0);
+ const totalMinutes=sessions.reduce((s,x)=>s+(+x.minutes||0),0);
+ const last7=Array.from({length:7},(_,i)=>{
+  const date=add(today,i-6);
+  const mins=sessions.filter(s=>s.date===date).reduce((s,x)=>s+(+x.minutes||0),0);
+  return {date,minutes:mins,active:g.activeDates.includes(date)};
+ });
+ const byCourse={};
+ tasks.forEach(t=>{
+  const name=(t.course||T('Lainnya','Other')).trim()||T('Lainnya','Other');
+  const c=byCourse[name]||(byCourse[name]={total:0,done:0,progressHours:0,estimate:0,count:0});
+  const est=Math.max(0,+t.est||0),p=Math.max(0,Math.min(100,+t.progress||0));
+  c.total+=est;c.progressHours+=est*p/100;c.estimate+=est;c.count++;if(p>=100)c.done++;
+ });
+ const courses=Object.entries(byCourse).map(([name,c])=>({name,progress:c.estimate?Math.round(c.progressHours/c.estimate*100):0,count:c.count,done:c.done,estimate:c.estimate})).sort((a,b)=>b.count-a.count).slice(0,6);
+ const hours={};
+ sessions.forEach(s=>{const h=Math.max(0,Math.min(23,+s.startHour||0));hours[h]=(hours[h]||0)+1});
+ const topHour=Object.entries(hours).sort((a,b)=>b[1]-a[1])[0]||null;
+ const avgSession=sessions.length?Math.round(totalMinutes/sessions.length):0;
+ const activeDays=last7.filter(x=>x.active).length;
+ return {total,done,overdue,due7,estimated,completedHours,remaining,sessions,totalMinutes,last7,courses,topHour,avgSession,activeDays};
+}
+function analyticsPanel(){
+ const d=analyticsData(),active=getActiveStudySession();
+ const pct=d.total?Math.round(d.done/d.total*100):0;
+ const hours=(d.totalMinutes/60).toFixed(1).replace('.',',');
+ const max=Math.max(30,...d.last7.map(x=>x.minutes));
+ const bars=d.last7.map((x,i)=>{
+  const h=x.minutes?Math.max(3,x.minutes/max*100):0;
+  const label=i===6?T('Hari ini','Today'):pd(x.date).toLocaleDateString(L==='en'?'en-US':'id-ID',{weekday:'short'});
+  return `<div class='an-barcol' title='${fd(x.date)}: ${x.minutes} menit'><b>${x.minutes?x.minutes+'m':'–'}</b><div class='an-bartrack'><i style='height:${h}%'></i></div><small>${label}</small></div>`;
+ }).join('');
+ const courseHtml=d.courses.length?d.courses.map(c=>`<div class='an-course'><div class='an-course-head'><span>${e(c.name)} <small style='color:var(--mu)'>· ${c.done}/${c.count} ${T('tugas','tasks')}</small></span><span>${c.progress}%</span></div><div class='an-track'><i style='width:${c.progress}%'></i></div></div>`).join(''):`<div class='an-empty'>${T('Belum ada data mata kuliah. Tambahkan tugas untuk memulai.','No course data yet. Add tasks to get started.')}</div>`;
+ let activeHtml='';
+ if(active){
+  const start=new Date(active.startedAt);
+  activeHtml=`<div class='an-session'><div class='an-session-copy'><b>${T('Sesi sedang berjalan','Study session in progress')}</b><small>${T('Dimulai pukul','Started at')} ${start.toLocaleTimeString(L==='en'?'en-US':'id-ID',{hour:'2-digit',minute:'2-digit'})} · ${fd(active.date||ymd(start))}</small></div><div class='an-actions'><button class='btn s' onclick='stopStudySession()'>${T('Selesaikan sesi','Finish session')}</button><button class='btn g s' onclick='discardStudySession()'>${T('Batalkan','Discard')}</button></div></div>`;
+ }else{
+  activeHtml=`<div class='an-session'><div class='an-session-copy'><b>${T('Catat sesi belajar','Log a study session')}</b><small>${T('Mulai saat fokus belajar, lalu selesaikan sesi ketika berhenti.','Start when you begin studying, then finish the session when you stop.')}</small></div><button class='btn s' onclick='startStudySession()'>${T('Mulai sesi','Start session')} +</button></div>`;
+ }
+ const hourText=d.sessions.length>=3&&d.topHour?`${String(+d.topHour[0]).padStart(2,'0')}:00 (${d.topHour[1]} ${T('sesi','sessions')})`:T('Belum cukup data (minimal 3 sesi)','Not enough data yet (3 sessions minimum)');
+ return `<div class='an-head'><div><h2>${T('Advanced Analytics','Advanced Analytics')}</h2><p>${T('Gambaran produktivitas berdasarkan data tugas dan sesi yang kamu catat.','A productivity overview based on your tasks and logged study sessions.')}</p></div><span class='pill k0'>${T('Ringkasan','Overview')}</span></div>
+ <div class='an-grid'>
+  <div class='an-kpi'><strong>${pct}%</strong><span>${T('Tugas selesai','Tasks completed')} · ${d.done}/${d.total}</span></div>
+  <div class='an-kpi'><strong>${d.overdue}</strong><span>${T('Tugas terlambat','Overdue tasks')}</span></div>
+  <div class='an-kpi'><strong>${H(d.remaining)}</strong><span>${T('Estimasi pekerjaan tersisa','Estimated work remaining')}</span></div>
+  <div class='an-kpi'><strong>${hours} h</strong><span>${T('Total sesi tercatat','Total logged study time')} · ${d.sessions.length} ${T('sesi','sessions')}</span></div>
+ </div>
+ <div class='an-two'>
+  <section class='an-card'><h3>${T('Durasi sesi · 7 hari','Study time · 7 days')}</h3><div class='an-sub'>${T('Hanya sesi yang kamu mulai dan simpan yang dihitung.','Only sessions you start and save are counted.')}</div>${d.last7.some(x=>x.minutes>0)?`<div class='an-bars'>${bars}</div>`:`<div class='an-empty'>${T('Belum ada sesi dalam 7 hari terakhir. Mulai sesi untuk membangun riwayat produktivitasmu.','No sessions in the last 7 days. Start a session to build your productivity history.')}</div>`}${activeHtml}</section>
+  <section class='an-card'><h3>${T('Progress per mata kuliah','Progress by course')}</h3><div class='an-sub'>${T('Persentase berbobot berdasarkan estimasi jam tiap tugas.','Weighted percentage based on estimated hours per task.')}</div>${courseHtml}</section>
+ </div>
+ <div class='an-two'>
+  <section class='an-card'><h3>${T('Kapasitas dan beban tugas','Workload and capacity')}</h3><div class='an-sub'>${T('Ringkasan estimasi pekerjaan dari seluruh tugas yang tersimpan.','Estimated workload across all saved tasks.')}</div>
+   <div class='an-course-head'><span>${T('Estimasi total','Total estimate')}</span><b>${H(d.estimated)}</b></div><div class='an-course-head'><span>${T('Estimasi sudah dikerjakan','Estimated completed work')}</span><b>${H(d.completedHours)}</b></div><div class='an-course-head'><span>${T('Estimasi tersisa','Estimated remaining work')}</span><b>${H(d.remaining)}</b></div><div class='an-course-head'><span>${T('Deadline 7 hari ke depan','Deadlines in next 7 days')}</span><b>${d.due7}</b></div>
+  </section>
+  <section class='an-card'><h3>${T('Pola waktu mulai sesi','Session start-time pattern')}</h3><div class='an-sub'>${T('Berdasarkan jam mulai sesi yang dicatat, bukan perkiraan jam paling produktif.','Based on logged session start times, not an inferred most productive hour.')}</div><div style='font:800 25px Bricolage Grotesque;margin:12px 0'>${hourText}</div><div class='an-course-head'><span>${T('Rata-rata durasi sesi','Average session length')}</span><b>${d.sessions.length?d.avgSession+' '+T('menit','min'):'–'}</b></div><div class='an-course-head'><span>${T('Hari aktif 7 hari terakhir','Active days in last 7 days')}</span><b>${d.activeDays}/7</b></div><div class='an-course-head'><span>${T('Tugas selesai mendekati deadline','Upcoming deadlines')}</span><b>${d.sessions.length}</b></div>
+  </section>
+ </div>
+ <p class='an-foot'>${T('Catatan data: riwayat XP dan streak tersedia sejak fitur gamifikasi digunakan. Durasi sesi dan pola jam mulai hanya tersedia sejak kamu mulai mencatat sesi di versi ini. Tanggal penyelesaian tugas lama tidak direka ulang karena aplikasi sebelumnya belum menyimpannya.','Data note: XP and streak history is available from when gamification was enabled. Session duration and start-time patterns are available only from sessions logged in this version. Older task completion dates are not reconstructed because the app did not previously store them.')}</p>`;
+}
+const _taktivaProgBeforeAnalytics=V.prog;
+V.prog=function(){return _taktivaProgBeforeAnalytics()+analyticsPanel()};
 
 boot();
 </script></body></html>
