@@ -78,3 +78,10 @@ Lalu daftar akun di satu perangkat, masuk di perangkat lain: tugasmu sama.
 - Added a daily focus list, upcoming deadline shortlist, task-completion overview, and quick links to Planner, Calendar, and Rescue.
 - The dashboard mascot pose changes with the overall task state while the user's selected profile avatar remains unchanged.
 - Existing task records, profile preferences, authentication, and cloud synchronization formats are unchanged.
+
+## Rescue Mode v3 (2026-10-30)
+- Rebuilt Rescue as a capacity-aware seven-day recovery simulation.
+- Prioritizes tasks by safety-buffer deadline and importance, and displays scheduled vs. unscheduled remaining work.
+- Adds a daily recovery view, overdue indicators, deadline-collision summary, flexible low-priority tasks, and prepared extension-message drafts.
+- The recovery view is a simulation: it does not silently change task deadlines, progress, or task estimates.
+- Responsive layout for desktop, tablet, and mobile.
