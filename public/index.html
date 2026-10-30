@@ -293,6 +293,63 @@ main{padding:26px clamp(20px,3vw,42px) 52px}
 }
 @media(prefers-reduced-motion:reduce){.avpick img{transition:none}}
 
+
+/* Dashboard refinement: clear hierarchy, useful weekly forecast, and responsive cards */
+.dash-hero{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 14px;padding:22px 24px;background:linear-gradient(115deg,var(--ac2),var(--sf) 72%);border-color:var(--ln);min-height:174px;overflow:hidden}
+.dash-hero-copy{min-width:0;max-width:760px}
+.dash-eyebrow{display:inline-block;font-size:10px;font-weight:800;letter-spacing:1.2px;color:var(--ac);margin-bottom:8px}
+.dash-hero h3{font-size:23px;letter-spacing:-.4px}
+.dash-hero p{color:var(--mu);margin:7px 0 13px;max-width:650px}
+.dash-actions{display:flex;gap:8px;flex-wrap:wrap}
+.dash-buddy{width:132px;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.dash-buddy img{width:100px;height:100px;object-fit:contain;animation:bob 3.4s ease-in-out infinite}
+.dash-buddy span{font-size:10px;color:var(--mu);text-align:center;font-weight:600}
+.dash-stats{margin-bottom:14px}
+.dash-stats .card{min-width:0}
+.dash-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:14px;align-items:stretch}
+.dash-grid>.card{min-width:0;padding:17px}
+.week-card{grid-column:1/-1}
+.dash-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.dash-section-head h3{font-size:17px}
+.dash-section-head p{color:var(--mu);font-size:12px;margin:4px 0 0}
+.week-bars{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;align-items:end;margin:18px 0 10px}
+.week-col{min-width:0;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--mu);font-size:11px}
+.week-col>span{white-space:nowrap}
+.week-col.today>span{color:var(--ac);font-weight:800}
+.week-value{font-size:10px;min-height:14px;color:var(--mu);white-space:nowrap}
+.week-track{height:92px;width:min(100%,54px);background:var(--bg);border:1px solid var(--ln);border-radius:10px;display:flex;align-items:flex-end;overflow:hidden}
+.week-fill{display:block;width:100%;min-height:0;border-radius:8px 8px 3px 3px;background:var(--ac);transition:height .35s ease}
+.week-fill.mid{background:var(--wa)}
+.week-fill.high{background:var(--bd)}
+.week-legend{display:flex;justify-content:space-between;gap:10px;align-items:center;border-top:1px solid var(--ln);padding-top:10px;color:var(--mu);font-size:11px;flex-wrap:wrap}
+.week-legend span{display:flex;align-items:center;gap:6px}
+.week-legend i{width:8px;height:8px;border-radius:50%;background:var(--ac)}
+.week-legend b{font-size:11px;color:var(--ink)}
+.week-note{font-size:11px;color:var(--mu);margin:8px 0 0}
+.week-note.warning{color:var(--bd);font-weight:700}
+.focus-row,.upcoming-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--ln);min-width:0}
+.focus-row:first-of-type,.upcoming-row:first-of-type{margin-top:8px}
+.focus-dot{width:8px;height:8px;border-radius:50%;background:var(--ac);flex:none}
+.focus-copy{flex:1;min-width:0}
+.focus-copy b{display:block;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.focus-copy small{display:block;color:var(--mu);font-size:11px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.focus-row>strong{font-size:12px;white-space:nowrap}
+.text-action{all:unset;display:inline-flex;align-items:center;gap:5px;color:var(--ac);font-size:12px;font-weight:700;cursor:pointer;margin-top:10px}
+.text-action:hover{text-decoration:underline}
+.upcoming-row{cursor:pointer}
+.upcoming-row:hover{background:var(--ac2);border-radius:9px;padding-left:6px;padding-right:6px}
+.upcoming-date{width:38px;height:42px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:10px;background:var(--ac2);color:var(--ac);flex:none;line-height:1.05}
+.upcoming-date b{font-size:16px}
+.upcoming-date small{font-size:9px;margin-top:3px}
+.completion-value{font:800 22px 'Bricolage Grotesque';color:var(--ac)}
+.completion-bar{height:10px;margin:16px 0 7px}
+.completion-meta{display:flex;justify-content:space-between;color:var(--mu);font-size:11px}
+.dash-empty{padding:22px 8px;font-size:12px}
+@media(max-width:900px){.dash-grid{grid-template-columns:minmax(0,1fr)}.week-card{grid-column:auto}}
+@media(max-width:760px){.dash-hero{padding:17px;min-height:0;gap:8px}.dash-hero h3{font-size:19px}.dash-buddy{width:86px}.dash-buddy img{width:72px;height:72px}.dash-buddy span{font-size:9px}.dash-grid>.card{padding:15px}.week-bars{gap:5px;margin-top:15px}.week-track{height:78px;width:min(100%,40px);border-radius:8px}.week-col{font-size:10px;gap:5px}.week-value{font-size:9px}.week-legend{font-size:10px}.week-legend b{font-size:10px}.dash-stats .st b{font-size:25px}}
+@media(max-width:390px){.dash-hero{align-items:flex-start}.dash-buddy{width:70px}.dash-buddy img{width:62px;height:62px}.dash-actions .btn{font-size:11px;padding:7px 9px}.week-bars{gap:3px}.week-track{width:32px}}
+@media(prefers-reduced-motion:reduce){.dash-buddy img{animation:none}}
+
 </style></head><body>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="logo" viewBox="0 0 48 48"><polygon points="8,20 9,5 22,11" fill="#4B3FE0" stroke="#4B3FE0" stroke-width="3" stroke-linejoin="round"/><polygon points="40,20 39,5 26,11" fill="#4B3FE0" stroke="#4B3FE0" stroke-width="3" stroke-linejoin="round"/><polygon points="11.5,14 11.8,9.2 16.4,11.6" fill="#FF9DB5" stroke="#FF9DB5" stroke-width="1.4" stroke-linejoin="round"/><polygon points="36.5,14 36.2,9.2 31.6,11.6" fill="#FF9DB5" stroke="#FF9DB5" stroke-width="1.4" stroke-linejoin="round"/><rect x="5" y="10" width="38" height="34" rx="16" fill="#4B3FE0"/><path d="M20.5 13.2l2.6 2.6 5-5.2" fill="none" stroke="#FFC857" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="18" width="28" height="21" rx="10" fill="#F3F1FF"/><ellipse cx="18" cy="27.5" rx="3.2" ry="3.8" fill="#171A3A"/><ellipse cx="30" cy="27.5" rx="3.2" ry="3.8" fill="#171A3A"/><circle cx="19.2" cy="26" r="1.2" fill="#fff"/><circle cx="31.2" cy="26" r="1.2" fill="#fff"/><ellipse cx="13.4" cy="32.6" rx="2.6" ry="1.7" fill="#FF9DB5"/><ellipse cx="34.6" cy="32.6" rx="2.6" ry="1.7" fill="#FF9DB5"/><path d="M21 32.2q1.5 2.2 3 0q1.5 2.2 3 0" fill="none" stroke="#171A3A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -568,6 +625,47 @@ return hd(T('Profil & Preferensi Belajar','Profile & Study Preferences'),T('Pers
 function calTo(id){const t=S.tasks.find(x=>x.id==id),d=pd(t.due);cm=new Date(d.getFullYear(),d.getMonth(),1);cd=t.due;go('cal')}
 const goR=()=>go('rescue'),_pl=V.plan;
 V.plan=function(){const h=_pl(),t=gt();return h+(t?`<div class='chips' style='margin-top:12px'><button class='btn g s' onclick='calTo(${t.id})'>${ic('cal')}${T('Lihat di kalender','See in calendar')}</button><button class='btn g s' onclick='goR()'>${ic('bolt')}${T('Cek di Rescue Mode','Check in Rescue Mode')}</button></div>`:'')};
+
+// ===== Dashboard v4: weekly workload forecast and contextual mascot =====
+function forecastWeek(){
+ const cap=Math.max(.5,+S.prefs.hours||1);
+ const days=Array.from({length:7},(_,i)=>({date:add(TODAY,i),hours:0,tasks:[]}));
+ const active=S.tasks.filter(t=>t.progress<100).map(t=>({t,rem:Math.max(0,(+t.est||0)*(1-Math.max(0,Math.min(100,+t.progress||0))/100)),due:dd(t.due)})).sort((a,b)=>a.due-b.due||(+b.t.imp||2)-(+a.t.imp||2));
+ active.forEach(a=>{
+  let remaining=a.rem;
+  const last=Math.max(0,Math.min(6,Number.isFinite(a.due)?a.due:6));
+  for(let i=0;i<=last&&remaining>.001;i++){
+   const used=Math.min(Math.max(0,cap-days[i].hours),remaining);
+   if(used>.001){days[i].hours+=used;days[i].tasks.push({id:a.t.id,title:a.t.title,hours:used});remaining-=used;}
+  }
+ });
+ return {cap,days,planned:days.reduce((n,d)=>n+d.hours,0)};
+}
+function dashboardBuddy(risk,active,done,total){
+ const pose=total>0&&done===total?9:risk>=3?14:risk>=2?5:active?4:1;
+ const label=total>0&&done===total?T('Misi selesai','Mission complete'):risk>=3?T('Sedang menyusun strategi','Thinking through a plan'):risk>=2?T('Ayo atur ulang ritme','Let’s reset the rhythm'):active?T('Temani sesi belajarmu','Here for your study session'):T('Siap menemani','Ready to help');
+ return `<div class='dash-buddy'><img src='/mascots/mascot-${String(pose).padStart(2,'0')}.svg' alt='${label}'><span>${label}</span></div>`;
+}
+V.dash=function(){
+ const A=analyze(),active=A.length,done=S.tasks.filter(t=>t.progress>=100).length,total=S.tasks.length;
+ const hi=A.filter(a=>a.risk>=2).length,critical=A.filter(a=>a.risk===3).length;
+ const load=A.reduce((n,a)=>n+a.rem,0),top=A[0],focus=A.filter(a=>a.today>.01).slice(0,4),week=forecastWeek();
+ const completion=total?Math.round(done/total*100):0;
+ const nearShort=A.filter(a=>a.d<=6).reduce((n,a)=>n+a.short,0);
+ const urgent=A.filter(a=>a.d<=7).sort((a,b)=>a.d-b.d||b.score-a.score).slice(0,4);
+ const allDone=total>0&&done===total;
+ const studyTime=({pagi:T('pagi','morning'),siang:T('siang','afternoon'),sore:T('sore','late afternoon'),malam:T('malam','night')})[S.prefs.time]||T('malam','night');
+ const statusTitle=allDone?T('Semua tugas berhasil diselesaikan!','All tasks completed!'):critical?T('Ada tugas yang perlu diselamatkan','Some tasks need rescuing'):hi?T('Beberapa deadline mulai mendekat','A few deadlines are getting close'):active?T('Ritmemu masih terkendali','Your workload is under control'):T('Mulai dari satu langkah kecil','Start with one small step');
+ const statusText=allDone?T('Kamu sudah menuntaskan semua tugas yang tercatat. Pertahankan ritme yang sehat.','You have completed every task on your list. Keep a healthy pace.'):critical?T(`${critical} tugas masuk kategori kritis. Buka Rescue untuk melihat pilihan penyesuaian yang realistis.`,`${critical} task(s) are critical. Open Rescue to review realistic ways to adjust your plan.`):hi?T(`${hi} tugas perlu perhatian lebih. Periksa prioritas dan kapasitas belajarmu.`,`${hi} task(s) need extra attention. Review your priorities and study capacity.`):top?T(`Prioritas berikutnya: ${top.t.title}. Mulai paling lambat ${fd(top.start)}.`,`Next priority: ${top.t.title}. Start no later than ${fd(top.start)}.`):T('Tambahkan tugas agar Taktiva bisa membantu menyusun prioritas dan jadwalmu.','Add a task so Taktiva can help organize your priorities and schedule.');
+ const bars=week.days.map((d,i)=>{const pct=Math.min(100,Math.round(d.hours/week.cap*100)),tone=pct>=85?'high':pct>=55?'mid':'low',label=i===0?T('Hari ini','Today'):pd(d.date).toLocaleDateString(L==='en'?'en-US':'id-ID',{weekday:'short'});return `<div class='week-col ${i===0?'today':''}' title='${label}: ${H(d.hours)} / ${H(week.cap)}'><div class='week-value'>${d.hours>.05?H(d.hours):'–'}</div><div class='week-track'><i class='week-fill ${tone}' style='height:${pct}%'></i></div><span>${label}</span></div>`}).join('');
+ return hd(`${T('Halo','Hello')}, ${e(S.prefs.name)}`,T('Gambaran singkat tugas, kapasitas, dan fokus belajarmu.','A clear view of your tasks, capacity, and study focus.'),addBtn)+
+ `<section class='dash-hero card'><div class='dash-hero-copy'><span class='dash-eyebrow'>${T('RINGKASAN HARI INI','TODAY AT A GLANCE')}</span><h3>${statusTitle}</h3><p>${e(statusText)}</p><div class='dash-actions'><button class='btn s' onclick='go("rescue")'>${ic('bolt')}${T('Buka Rescue','Open Rescue')}</button><button class='btn g s' onclick='go("plan")'>${ic('route')}${T('Lihat Planner','Open Planner')}</button></div></div>${dashboardBuddy(critical?3:hi?2:0,active,done,total)}</section>`+
+ `<div class='grid g4 dash-stats'><div class='card st'><b>${active}</b><span>${T('Tugas aktif','Active tasks')}</span></div><div class='card st'><b>${H(load)}</b><span>${T('Sisa pengerjaan','Work remaining')}</span></div><div class='card st'><b style='color:${hi?'var(--bd)':'var(--ok)'}'>${hi}</b><span>${T('Perlu perhatian','Need attention')}</span></div><div class='card st'><b>${done}/${total}</b><span>${T('Tugas selesai','Tasks completed')}</span></div></div>`+
+ `<div class='dash-grid'><section class='card week-card'><div class='dash-section-head'><div><h3>${T('Beban 7 hari ke depan','Next 7 days workload')}</h3><p>${T('Proyeksi memakai kapasitas harian dari profilmu.','Forecast based on the daily capacity in your profile.')}</p></div><button class='btn g s' onclick='go("cal")'>${T('Kalender','Calendar')}</button></div><div class='week-bars'>${bars}</div><div class='week-legend'><span><i></i>${T('Estimasi beban','Projected workload')}</span><b>${H(week.planned)} / ${H(week.cap*7)} ${T('kapasitas mingguan','weekly capacity')}</b></div><p class='week-note ${nearShort>.01?'warning':''}'>${nearShort>.01?T(`${H(nearShort)} belum tertampung sebelum deadline terdekat.`,`${H(nearShort)} still cannot fit before the nearest deadlines.`):T('Tidak ada kekurangan kapasitas pada deadline 7 hari ke depan.','No capacity shortfall for deadlines in the next 7 days.')}</p></section>`+
+ `<section class='card focus-card'><div class='dash-section-head'><div><h3>${T('Fokus hari ini','Today’s focus')}</h3><p>${T(`Kapasitas belajar ${H(week.cap)} per hari · sesi ${studyTime}.`,`Study capacity ${H(week.cap)} per day · ${studyTime} session.`)}</p></div></div>${focus.map(a=>`<div class='focus-row'><div class='focus-dot'></div><div class='focus-copy'><b>${e(a.t.title)}</b><small>${e(a.t.course||T('Tanpa mata pelajaran','No subject'))} · ${T('deadline','due')} ${when(dd(a.t.due))}</small></div><strong>${H(a.today)}</strong></div>`).join('')||`<div class='empty dash-empty'>${T('Belum ada sesi yang perlu dijadwalkan hari ini.','No study sessions need scheduling today.')}</div>`}<button class='text-action' onclick='go("plan")'>${T('Atur sesi di Planner','Arrange sessions in Planner')} →</button></section>`+
+ `<section class='card upcoming-card'><div class='dash-section-head'><div><h3>${T('Deadline terdekat','Upcoming deadlines')}</h3><p>${T('Tugas yang jatuh tempo dalam 7 hari.','Tasks due within the next 7 days.')}</p></div><button class='btn g s' onclick='go("tasks")'>${T('Semua tugas','All tasks')}</button></div>${urgent.map(a=>`<div class='upcoming-row' data-pid='${a.t.id}'><div class='upcoming-date'><b>${pd(a.t.due).getDate()}</b><small>${pd(a.t.due).toLocaleDateString(L==='en'?'en-US':'id-ID',{month:'short'})}</small></div><div class='focus-copy'><b>${e(a.t.title)}</b><small>${e(a.t.course||T('Tanpa mata pelajaran','No subject'))} · ${when(dd(a.t.due))}</small></div>${pill(a.risk)}</div>`).join('')||`<div class='empty dash-empty'>${T('Tidak ada deadline dalam 7 hari ke depan.','No deadlines in the next 7 days.')}</div>`}</section>`+
+ `<section class='card completion-card'><div class='dash-section-head'><div><h3>${T('Konsistensi progres','Progress overview')}</h3><p>${T('Persentase berdasarkan jumlah tugas yang selesai.','Percentage based on completed task count.')}</p></div><b class='completion-value'>${completion}%</b></div><div class='bar completion-bar'><i style='width:${completion}%'></i></div><div class='completion-meta'><span>${done} ${T('selesai','completed')}</span><span>${Math.max(0,total-done)} ${T('tersisa','remaining')}</span></div><button class='text-action' onclick='go("prog")'>${T('Lihat detail progres','View progress details')} →</button></section></div>`;
+};
 // ===== Akun cloud & sinkronisasi multi-perangkat =====
 Object.assign(EX,{'Konfirmasi kata sandi':'Confirm password','Tampilkan kata sandi':'Show password'});
 const TKN='taskmate.token',RV='taskmate.rev.',uid=()=>Date.now()*100+Math.floor(Math.random()*100);
