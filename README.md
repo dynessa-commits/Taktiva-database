@@ -85,3 +85,11 @@ Lalu daftar akun di satu perangkat, masuk di perangkat lain: tugasmu sama.
 - Adds a daily recovery view, overdue indicators, deadline-collision summary, flexible low-priority tasks, and prepared extension-message drafts.
 - The recovery view is a simulation: it does not silently change task deadlines, progress, or task estimates.
 - Responsive layout for desktop, tablet, and mobile.
+
+
+## Smart Reminder v7 (2026-10-30)
+- Added a reminder center accessible from the top-bar bell, without adding another sidebar item.
+- Added per-account reminder preferences: enable/disable, lead time (0-3 days before, plus due day), and local reminder time.
+- Browser notification permission is requested only after an explicit user click.
+- Reminder delivery is checked on app start, when the tab becomes visible, and once per minute while Taktiva is open. Duplicate reminders are tracked per account on each device.
+- Important limitation: this version does not send background push notifications while the app is closed or offline. That requires a push service and subscription backend.
