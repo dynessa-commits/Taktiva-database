@@ -398,6 +398,55 @@ main{padding:26px clamp(20px,3vw,42px) 52px}
 .reminder-empty{padding:28px;text-align:center;color:var(--mu);background:var(--bg);border-radius:12px}
 @media(max-width:760px){.reminder-setting{grid-template-columns:minmax(0,1fr) minmax(100px,130px)}.reminder-item{align-items:flex-start;flex-wrap:wrap}.reminder-item-actions{width:100%;justify-content:flex-end}.reminder-hero{padding:15px}.reminder-hero .reminder-hero-icon{width:42px;height:42px}}
 
+
+/* Taktiva v8: calm study streaks and meaningful achievements */
+.gm-card{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(180px,.8fr);gap:18px;align-items:center;margin-top:14px}
+.gm-main{display:flex;gap:14px;align-items:center;min-width:0}
+.gm-mascot{width:76px;height:76px;object-fit:contain;flex:none}
+.gm-eyebrow{font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--mu)}
+.gm-title{font:800 20px 'Bricolage Grotesque';margin:3px 0}
+.gm-copy{color:var(--mu);font-size:12px;margin:3px 0 9px}
+.gm-levelbar{height:8px;background:var(--ln);border-radius:20px;overflow:hidden}
+.gm-levelbar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac),#9B79FF);border-radius:20px}
+.gm-levelmeta{display:flex;justify-content:space-between;gap:8px;color:var(--mu);font-size:10px;margin-top:5px}
+.gm-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gm-stat{padding:11px;border:1px solid var(--ln);border-radius:12px;background:var(--bg);min-width:0}
+.gm-stat b{display:block;font:800 21px 'Bricolage Grotesque';white-space:nowrap}
+.gm-stat span{display:block;color:var(--mu);font-size:10px}
+.gm-panel{margin-top:14px}
+.gm-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.gm-panel-head p{margin:4px 0 0;color:var(--mu);font-size:12px}
+.gm-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:12px 0 18px}
+.gm-day{display:grid;gap:5px;justify-items:center;min-width:0}
+.gm-day strong{font-size:10px;color:var(--mu);font-weight:600}
+.gm-day-track{height:58px;width:100%;max-width:34px;border-radius:8px;background:var(--bg);display:flex;align-items:flex-end;overflow:hidden}
+.gm-day-track i{display:block;width:100%;min-height:0;background:var(--ac);border-radius:7px}
+.gm-day small{font-size:9px;color:var(--mu)}
+.gm-goal{padding:12px;background:var(--bg);border-radius:12px;margin:10px 0 16px}
+.gm-goal-head{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin-bottom:8px}
+.gm-goal-head span{color:var(--mu)}
+.gm-badges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.gm-badge{border:1px solid var(--ln);border-radius:12px;padding:12px;min-width:0;background:var(--sf)}
+.gm-badge.locked{opacity:.48;background:var(--bg)}
+.gm-badge-mark{width:34px;height:34px;border-radius:10px;background:var(--ac2);color:var(--ac);display:grid;place-items:center;font-size:18px;font-weight:800;margin-bottom:8px}
+.gm-badge b{display:block;font-size:12px}
+.gm-badge small{display:block;color:var(--mu);font-size:10px;line-height:1.4;margin-top:3px}
+.gm-footnote{color:var(--mu);font-size:11px;margin:12px 0 0}
+@media(max-width:760px){
+ .gm-card{grid-template-columns:1fr;gap:12px}
+ .gm-mascot{width:64px;height:64px}
+ .gm-stats{gap:6px}
+ .gm-stat{padding:9px}
+ .gm-stat b{font-size:18px}
+ .gm-badges{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .gm-week{gap:5px}
+}
+@media(prefers-reduced-motion:no-preference){
+ .gm-levelbar i{transition:width .35s ease}
+ .gm-badge:not(.locked){transition:transform .15s ease,border-color .15s ease}
+ .gm-badge:not(.locked):hover{transform:translateY(-2px);border-color:var(--ac)}
+}
+
 </style></head><body>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="logo" viewBox="0 0 48 48"><polygon points="8,20 9,5 22,11" fill="#4B3FE0" stroke="#4B3FE0" stroke-width="3" stroke-linejoin="round"/><polygon points="40,20 39,5 26,11" fill="#4B3FE0" stroke="#4B3FE0" stroke-width="3" stroke-linejoin="round"/><polygon points="11.5,14 11.8,9.2 16.4,11.6" fill="#FF9DB5" stroke="#FF9DB5" stroke-width="1.4" stroke-linejoin="round"/><polygon points="36.5,14 36.2,9.2 31.6,11.6" fill="#FF9DB5" stroke="#FF9DB5" stroke-width="1.4" stroke-linejoin="round"/><rect x="5" y="10" width="38" height="34" rx="16" fill="#4B3FE0"/><path d="M20.5 13.2l2.6 2.6 5-5.2" fill="none" stroke="#FFC857" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="18" width="28" height="21" rx="10" fill="#F3F1FF"/><ellipse cx="18" cy="27.5" rx="3.2" ry="3.8" fill="#171A3A"/><ellipse cx="30" cy="27.5" rx="3.2" ry="3.8" fill="#171A3A"/><circle cx="19.2" cy="26" r="1.2" fill="#fff"/><circle cx="31.2" cy="26" r="1.2" fill="#fff"/><ellipse cx="13.4" cy="32.6" rx="2.6" ry="1.7" fill="#FF9DB5"/><ellipse cx="34.6" cy="32.6" rx="2.6" ry="1.7" fill="#FF9DB5"/><path d="M21 32.2q1.5 2.2 3 0q1.5 2.2 3 0" fill="none" stroke="#171A3A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -925,6 +974,124 @@ V.reminders=function(){
  (cards||`<div class='reminder-empty'>${T('Tidak ada deadline aktif dalam 7 hari ke depan. Kamu bisa menggunakan waktu ini untuk mulai lebih awal.','No active deadlines in the next 7 days. Use this time to get ahead.')}</div>`)+
  `<div class='reminder-note'>${T('Catatan: pengingat browser dipicu saat Taktiva sedang terbuka dan perangkat mengizinkan notifikasi. Pengingat tidak berjalan ketika aplikasi ditutup atau perangkat offline. Untuk notifikasi latar belakang diperlukan layanan push server yang belum termasuk versi ini.','Note: browser reminders are triggered while Taktiva is open and the device allows notifications. They do not run while the app is closed or the device is offline. Background notifications require a push server, which is not included in this version.')}</div>`;
 };
+
+
+// ===== Study Streak & Gamification v8 =====
+// XP is earned only for new progress milestones. Existing progress is adopted as a baseline,
+// so upgrading does not grant retroactive points or reset a user's work.
+const GM_LEVELS=[0,100,250,450,700,1000,1400,1900,2500,3200];
+const GM_LEVEL_NAMES=[
+ ['Pemula','Starter'],['Mulai konsisten','Getting steady'],['Tekun','Dedicated'],
+ ['Tangguh','Resilient'],['Andal','Reliable'],['Ahli','Expert'],
+ ['Master','Master'],['Legenda','Legend'],['Grandmaster','Grandmaster'],['Champion','Champion']
+];
+function gmEnsure(){
+ S.prefs=S.prefs||{};
+ let g=S.prefs.gamification;
+ if(!g||typeof g!=='object'){
+  g={xp:0,maxProgress:{},completed:{},activeDates:[],dailyXP:{}};
+  S.tasks.forEach(t=>{
+   const id=String(t.id),p=Math.max(0,Math.min(100,Number(t.progress)||0));
+   g.maxProgress[id]=p;
+   if(p>=100)g.completed[id]=true;
+  });
+  S.prefs.gamification=g;
+ }
+ g.xp=Math.max(0,Number(g.xp)||0);
+ g.maxProgress=g.maxProgress&&typeof g.maxProgress==='object'?g.maxProgress:{};
+ g.completed=g.completed&&typeof g.completed==='object'?g.completed:{};
+ g.activeDates=Array.isArray(g.activeDates)?g.activeDates:[];
+ g.dailyXP=g.dailyXP&&typeof g.dailyXP==='object'?g.dailyXP:{};
+ return g;
+}
+function gmLevel(xp){
+ let level=1;
+ for(let i=1;i<GM_LEVELS.length;i++){if(xp>=GM_LEVELS[i])level=i+1;else break}
+ const start=GM_LEVELS[level-1],next=GM_LEVELS[level]??GM_LEVELS[GM_LEVELS.length-1];
+ return {level,name:GM_LEVEL_NAMES[level-1][li()],start,next,progress:level>=GM_LEVELS.length?100:Math.max(0,Math.min(100,(xp-start)/(next-start)*100)),remaining:Math.max(0,next-xp)};
+}
+function gmAddActivity(g,date,xp){
+ if(!g.activeDates.includes(date))g.activeDates.push(date);
+ g.activeDates=[...new Set(g.activeDates)].sort().slice(-365);
+ if(xp>0)g.dailyXP[date]=(Number(g.dailyXP[date])||0)+xp;
+ const keep=new Set(g.activeDates.slice(-90));
+ Object.keys(g.dailyXP).forEach(k=>{if(!keep.has(k))delete g.dailyXP[k]});
+}
+function gmTrackProgress(){
+ if(!S||!Array.isArray(S.tasks))return;
+ const g=gmEnsure(),today=ymd(new Date());
+ let earned=0,activity=false;
+ S.tasks.forEach(t=>{
+  const id=String(t.id),cur=Math.max(0,Math.min(100,Number(t.progress)||0));
+  if(!Object.prototype.hasOwnProperty.call(g.maxProgress,id)){
+   g.maxProgress[id]=cur;
+   if(cur>=100)g.completed[id]=true;
+   return;
+  }
+  const prev=Math.max(0,Math.min(100,Number(g.maxProgress[id])||0));
+  if(cur>prev){
+   activity=true;
+   const delta=Math.max(0,Math.floor(cur*.4)-Math.floor(prev*.4));
+   if(delta>0){g.xp+=delta;earned+=delta}
+   g.maxProgress[id]=cur;
+   if(cur>=100&&!g.completed[id]){
+    g.completed[id]=true;g.xp+=20;earned+=20;
+   }
+  }
+ });
+ if(activity)gmAddActivity(g,today,earned);
+ if(Object.keys(g.maxProgress).length>500){
+  const keep=new Set(S.tasks.map(t=>String(t.id)));
+  Object.keys(g.maxProgress).forEach(id=>{if(!keep.has(id)&&!g.completed[id])delete g.maxProgress[id]});
+ }
+ if(earned>0){
+  const before=gmLevel(g.xp-earned).level,after=gmLevel(g.xp).level;
+  if(after>before)setTimeout(()=>toast(T(`Naik level! Kamu sekarang Level ${after}.`,`Level up! You are now Level ${after}.`)),0);
+ }
+}
+function gmStreak(g){
+ const set=new Set(g.activeDates),today=ymd(new Date());
+ const shift=(date,n)=>{const d=pd(date);d.setDate(d.getDate()+n);return ymd(d)};
+ let cursor=set.has(today)?today:shift(today,-1),count=0;
+ while(set.has(cursor)&&count<365){count++;cursor=shift(cursor,-1)}
+ let best=0,run=0,prev='';
+ [...set].sort().forEach(d=>{run=prev&&shift(prev,1)===d?run+1:1;best=Math.max(best,run);prev=d});
+ return {current:count,longest:best,activeToday:set.has(today)};
+}
+function gmSnapshot(){
+ const g=gmEnsure(),lvl=gmLevel(g.xp),streak=gmStreak(g);
+ const completed=Object.keys(g.completed).filter(id=>g.completed[id]).length;
+ const today=ymd(new Date()),todayXP=Number(g.dailyXP[today])||0;
+ return {g,lvl,streak,completed,todayXP,goal:20};
+}
+function gmDashboardCard(){
+ const x=gmSnapshot(),pose=x.streak.current>=7?9:x.lvl.level>=5?6:x.streak.current>=3?4:1;
+ const next=x.lvl.level>=GM_LEVELS.length?T('Level maksimum tercapai','Maximum level reached'):T(`${x.lvl.remaining} XP menuju level berikutnya`,`${x.lvl.remaining} XP to the next level`);
+ const streakText=x.streak.current?T(`${x.streak.current} hari aktif berturut-turut`,`${x.streak.current}-day active streak`):T('Mulai bangun ritme belajarmu hari ini','Start building your study rhythm today');
+ return `<section class='card gm-card'><div class='gm-main'><img class='gm-mascot' src='/mascots/mascot-${String(pose).padStart(2,'0')}.svg' alt='Taktiva mascot'><div style='min-width:0;flex:1'><span class='gm-eyebrow'>TAKTIVA STUDY JOURNEY</span><h3 class='gm-title'>${T('Level','Level')} ${x.lvl.level} · ${x.lvl.name}</h3><p class='gm-copy'>${streakText}. ${next}.</p><div class='gm-levelbar'><i style='width:${x.lvl.progress}%'></i></div><div class='gm-levelmeta'><span>${x.lvl.start} XP</span><span>${x.lvl.level>=GM_LEVELS.length?x.lvl.start:GM_LEVELS[x.lvl.level]} XP</span></div></div></div><div class='gm-stats'><div class='gm-stat'><b>${x.streak.current} <small style='font:500 11px Figtree'>${T('hari','days')}</small></b><span>${T('Streak saat ini','Current streak')}</span></div><div class='gm-stat'><b>${x.g.xp}</b><span>Total XP</span></div><div class='gm-stat'><b>${x.completed}</b><span>${T('Tugas tuntas','Tasks completed')}</span></div></div><div style='grid-column:1/-1;display:flex;justify-content:flex-end'><button class='btn g s' onclick='go("prog")'>${T('Lihat pencapaian','View achievements')} →</button></div></section>`;
+}
+function gmAchievementsPanel(){
+ const x=gmSnapshot(),g=x.g,today=ymd(new Date());
+ const badges=[
+  ['first',T('Langkah pertama','First step'),T('Selesaikan tugas pertamamu.','Complete your first task.'),'✓',x.completed>=1],
+  ['five',T('Lima kemenangan','Five wins'),T('Selesaikan 5 tugas.','Complete 5 tasks.'),'★',x.completed>=5],
+  ['streak3',T('Mulai konsisten','Building consistency'),T('Aktif belajar 3 hari berturut-turut.','Be active 3 days in a row.'),'3',x.streak.longest>=3],
+  ['streak7',T('Satu minggu kuat','A strong week'),T('Aktif belajar 7 hari berturut-turut.','Be active 7 days in a row.'),'7',x.streak.longest>=7],
+  ['xp250',T('Pengumpul XP','XP collector'),T('Kumpulkan 250 XP.','Earn 250 XP.'),'✦',g.xp>=250],
+  ['xp500',T('Momentum besar','Big momentum'),T('Kumpulkan 500 XP.','Earn 500 XP.'),'◆',g.xp>=500]
+ ];
+ const last7=Array.from({length:7},(_,i)=>{const d=add(today,i-6);return {date:d,xp:Number(g.dailyXP[d])||0}});
+ const max=Math.max(20,...last7.map(d=>d.xp));
+ const bars=last7.map((d,i)=>`<div class='gm-day' title='${fd(d.date)}: ${d.xp} XP'><strong>${i===6?T('Hari ini','Today'):pd(d.date).toLocaleDateString(L==='en'?'en-US':'id-ID',{weekday:'short'})}</strong><div class='gm-day-track'><i style='height:${Math.max(0,Math.min(100,d.xp/max*100))}%'></i></div><small>${d.xp||'–'}</small></div>`).join('');
+ const pct=Math.min(100,Math.round(x.todayXP/x.goal*100));
+ return `<section class='card gm-panel'><div class='gm-panel-head'><div><h3>${T('Study streak & pencapaian','Study streak & achievements')}</h3><p>${T('Apresiasi untuk progres nyata, bukan sekadar membuka aplikasi.','Rewards for real progress, not simply opening the app.')}</p></div><span class='pill k0'>${x.g.xp} XP</span></div><div class='grid g4' style='margin-bottom:12px'><div class='gm-stat'><b>${x.streak.current}</b><span>${T('Streak sekarang','Current streak')}</span></div><div class='gm-stat'><b>${x.streak.longest}</b><span>${T('Streak terpanjang','Longest streak')}</span></div><div class='gm-stat'><b>${x.completed}</b><span>${T('Tugas selesai','Completed tasks')}</span></div><div class='gm-stat'><b>${x.lvl.level}</b><span>${T('Level saat ini','Current level')}</span></div></div><div class='gm-goal'><div class='gm-goal-head'><b>${T('Target aktivitas hari ini','Today’s activity goal')}</b><span>${x.todayXP} / ${x.goal} XP</span></div><div class='bar'><i style='width:${pct}%'></i></div><small style='display:block;color:var(--mu);margin-top:7px;font-size:10px'>${pct>=100?T('Target hari ini tercapai. Ambil jeda yang sehat.','Today’s goal reached. Take a healthy break.'):T('XP diperoleh dari peningkatan progres tugas. Target ini panduan, bukan kewajiban.','XP comes from task progress increases. This goal is guidance, not an obligation.')}</small></div><h3 style='font-size:16px'>${T('Aktivitas 7 hari','Last 7 days')}</h3><div class='gm-week'>${bars}</div><h3 style='font-size:16px;margin-bottom:10px'>${T('Lencana pencapaian','Achievement badges')}</h3><div class='gm-badges'>${badges.map(b=>`<div class='gm-badge ${b[4]?'':'locked'}'><div class='gm-badge-mark'>${b[3]}</div><b>${b[1]}</b><small>${b[2]}</small><small style='margin-top:7px;font-weight:700'>${b[4]?T('Terbuka','Unlocked'):T('Belum terbuka','Locked')}</small></div>`).join('')}</div><p class='gm-footnote'>${T('Streak dihitung dari hari ketika progres tugas benar-benar meningkat. Hari istirahat tidak mendapat XP, dan tidak ada penalti untuk beristirahat.','A streak counts days when task progress actually increases. Rest days earn no XP, and there is no penalty for taking a break.')}</p></section>`;
+}
+const _taktivaRenderBeforeGM=render;
+render=function(){gmTrackProgress();return _taktivaRenderBeforeGM()};
+const _taktivaDashBeforeGM=V.dash;
+V.dash=function(){return _taktivaDashBeforeGM()+gmDashboardCard()};
+const _taktivaProgBeforeGM=V.prog;
+V.prog=function(){return _taktivaProgBeforeGM()+gmAchievementsPanel()};
 
 boot();
 </script></body></html>

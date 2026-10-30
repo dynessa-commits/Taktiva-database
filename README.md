@@ -93,3 +93,12 @@ Lalu daftar akun di satu perangkat, masuk di perangkat lain: tugasmu sama.
 - Browser notification permission is requested only after an explicit user click.
 - Reminder delivery is checked on app start, when the tab becomes visible, and once per minute while Taktiva is open. Duplicate reminders are tracked per account on each device.
 - Important limitation: this version does not send background push notifications while the app is closed or offline. That requires a push service and subscription backend.
+
+
+## Study Streak & Gamification v8
+- Progress milestones award XP once per task's highest recorded progress; reaching 100% adds a one-time completion bonus.
+- Existing task progress is adopted as a baseline on first launch, so the upgrade does not grant retroactive XP.
+- Current and longest study streaks count days when task progress actually increases.
+- Levels, daily XP summaries, and six achievement badges are shown inside Progress and as a compact Dashboard card.
+- Gamification data is stored in account preferences so it follows the existing cloud sync and backup flow.
+- Rest days are not penalized; streaks simply pause and resume only when activity is recorded on consecutive days.
