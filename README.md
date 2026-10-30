@@ -64,3 +64,10 @@ Lalu daftar akun di satu perangkat, masuk di perangkat lain: tugasmu sama.
 - Profile page uses a two-column layout: profile/mascot picker on the left, study rhythm and appearance/language on the right, with backup controls below.
 - Added 15 original SVG mascot pose variants under `public/mascots/`. The selected mascot or uploaded photo is stored in the existing account preferences.
 - Theme choices now include Auto, Light, and Dark.
+
+
+## UI refinement (2026-10-30)
+- Sidebar width reduced and visual treatment simplified: quiet near-white surface, restrained lavender active state, lighter icons, and less decorative shadow/gradient.
+- Profile remains accessible from the identity card directly below the Taktiva brand; there is no duplicate Profile navigation item.
+- The 15 mascot choices now use distinct study-friendly poses and props (waving, reading, writing, running, celebrating, caring for a plant, etc.) while preserving the same Taktiva cat identity.
+- Mascot picker includes short pose labels and accessible descriptions.
