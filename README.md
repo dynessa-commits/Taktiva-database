@@ -71,3 +71,10 @@ Lalu daftar akun di satu perangkat, masuk di perangkat lain: tugasmu sama.
 - Profile remains accessible from the identity card directly below the Taktiva brand; there is no duplicate Profile navigation item.
 - The 15 mascot choices now use distinct study-friendly poses and props (waving, reading, writing, running, celebrating, caring for a plant, etc.) while preserving the same Taktiva cat identity.
 - Mascot picker includes short pose labels and accessible descriptions.
+
+## Dashboard refresh (2026-10-30)
+- Dashboard now includes a seven-day workload estimate based on the daily study capacity configured in the profile.
+- The forecast highlights capacity pressure before near-term deadlines; it is an estimate, not a fixed calendar booking.
+- Added a daily focus list, upcoming deadline shortlist, task-completion overview, and quick links to Planner, Calendar, and Rescue.
+- The dashboard mascot pose changes with the overall task state while the user's selected profile avatar remains unchanged.
+- Existing task records, profile preferences, authentication, and cloud synchronization formats are unchanged.
