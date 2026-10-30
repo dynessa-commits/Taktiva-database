@@ -23,5 +23,15 @@
       "sizes": "any",
       "type": "image/svg+xml"
     }
+  ],
+  "id": "/",
+  "scope": "/",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "categories": [
+    "education",
+    "productivity"
   ]
 }

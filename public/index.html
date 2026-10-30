@@ -480,6 +480,20 @@ main{padding:26px clamp(20px,3vw,42px) 52px}
 @media(max-width:900px){.an-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.an-two{grid-template-columns:1fr}.an-card{padding:13px}.an-kpi{padding:11px}.an-kpi strong{font-size:20px}.an-head{margin-top:14px}}
 
+
+/* Taktiva v10: offline-ready PWA */
+.pwa-card{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:14px}
+.pwa-main{display:flex;align-items:center;gap:12px;min-width:0}
+.pwa-mark{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:var(--ac2);color:var(--ac);flex:none}
+.pwa-copy{min-width:0}
+.pwa-copy b{display:block;font-size:13px}
+.pwa-copy small{display:block;color:var(--mu);font-size:10px;line-height:1.45;margin-top:3px}
+.pwa-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.pwa-pill{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--ln);border-radius:30px;padding:5px 9px;font-size:10px;color:var(--mu);white-space:nowrap}
+.pwa-pill:before{content:'';width:6px;height:6px;border-radius:50%;background:var(--ok)}
+.pwa-pill.off:before{background:var(--wa)}
+@media(max-width:650px){.pwa-card{align-items:flex-start;flex-direction:column}.pwa-actions{width:100%;justify-content:space-between}}
+
 </style></head><body>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="logo" viewBox="0 0 48 48"><polygon points="8,20 9,5 22,11" fill="#4B3FE0" stroke="#4B3FE0" stroke-width="3" stroke-linejoin="round"/><polygon points="40,20 39,5 26,11" fill="#4B3FE0" stroke="#4B3FE0" stroke-width="3" stroke-linejoin="round"/><polygon points="11.5,14 11.8,9.2 16.4,11.6" fill="#FF9DB5" stroke="#FF9DB5" stroke-width="1.4" stroke-linejoin="round"/><polygon points="36.5,14 36.2,9.2 31.6,11.6" fill="#FF9DB5" stroke="#FF9DB5" stroke-width="1.4" stroke-linejoin="round"/><rect x="5" y="10" width="38" height="34" rx="16" fill="#4B3FE0"/><path d="M20.5 13.2l2.6 2.6 5-5.2" fill="none" stroke="#FFC857" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="18" width="28" height="21" rx="10" fill="#F3F1FF"/><ellipse cx="18" cy="27.5" rx="3.2" ry="3.8" fill="#171A3A"/><ellipse cx="30" cy="27.5" rx="3.2" ry="3.8" fill="#171A3A"/><circle cx="19.2" cy="26" r="1.2" fill="#fff"/><circle cx="31.2" cy="26" r="1.2" fill="#fff"/><ellipse cx="13.4" cy="32.6" rx="2.6" ry="1.7" fill="#FF9DB5"/><ellipse cx="34.6" cy="32.6" rx="2.6" ry="1.7" fill="#FF9DB5"/><path d="M21 32.2q1.5 2.2 3 0q1.5 2.2 3 0" fill="none" stroke="#171A3A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -494,6 +508,7 @@ main{padding:26px clamp(20px,3vw,42px) 52px}
 <symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></symbol>
 <symbol id="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></symbol>
 <symbol id="bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 00-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol><symbol id="out" viewBox="0 0 24 24"><path d="M9 4H5a2 2 0 00-2 2v12a2 2 0 002 2h4M16 8l4 4-4 4M20 12H9"/></symbol>
+<symbol id="download" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3h16v-3"/></symbol>
 </defs></svg>
 <div id="auth" hidden><div class="ac card"><div style="display:flex;justify-content:space-between;align-items:flex-start"><svg class="mas" style="width:72px;height:72px"><use href="#logo"/></svg><div style="display:flex;gap:6px"><button class="ib lg" onclick="setLang()" aria-label="Ganti bahasa"></button><button class="ib tg" onclick="setTheme()" aria-label="Ganti tema terang atau gelap"></button></div></div><h2 style="margin-top:8px">Taktiva</h2><p style="color:var(--mu);margin:4px 0 14px">Don’t Just Track Deadlines. Stay Ahead of Them.</p><div style="display:flex;gap:6px;margin-bottom:6px"><button class="btn s" id="t_in" onclick="authUI(false)">Masuk</button><button class="btn s g" id="t_up" onclick="authUI(true)">Daftar</button></div><div id="rg" hidden><label for="a_n">Nama lengkap</label><input id="a_n" autocomplete="name"><label for="a_l">Jenjang</label><select id="a_l"><option>Mahasiswa</option><option>SMA/SMK</option></select></div><label for="a_e">Email</label><input id="a_e" type="email" autocomplete="email"><label for="a_p">Kata sandi</label><input id="a_p" type="password" autocomplete="current-password"><div id="rg2" hidden><label for="a_c">Konfirmasi kata sandi</label><input id="a_c" type="password" autocomplete="new-password"></div><label style="display:flex;gap:8px;align-items:center;margin:10px 0 0"><input type="checkbox" style="width:auto" onchange="a_p.type=a_c.type=this.checked?'text':'password'">Tampilkan kata sandi</label><p class="er" id="a_m" role="alert"></p><button class="btn" id="a_b" style="width:100%;justify-content:center;margin-top:8px" onclick="authGo()">Masuk</button></div></div>
 <div class="app" hidden>
@@ -586,7 +601,7 @@ function go(v){view=v;const m=$('#v');m.classList.add('an');render();scrollTo(0,
 function ensureReminderPrefs(){S.prefs=S.prefs||{};if(S.prefs.remindersEnabled===undefined)S.prefs.remindersEnabled=true;if(S.prefs.reminderLead===undefined)S.prefs.reminderLead=1;if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(S.prefs.reminderTime||''))S.prefs.reminderTime='09:00'}
 function reminderCount(){const today=ymd(new Date());return S.tasks.filter(t=>Number(t.progress||0)<100&&ddFrom(today,t.due)<=3).length}
 function ddFrom(a,b){return Math.round((pd(b)-pd(a))/864e5)}
-function render(){ensureReminderPrefs();nav();$('#v').innerHTML=`<div class="top"><span class="sy" id="sy" onclick="pull();push()" role="button"></span><button class="ib reminder-bell" onclick="go('reminders')" aria-label="${T('Pusat pengingat','Reminder center')}">${ic('bell')}${reminderCount()?`<i class="reminder-count">${Math.min(99,reminderCount())}</i>`:''}</button><button class="ib profile-shortcut" onclick="go('me')" aria-label="Profil">${avatarHTML()}</button><button class="ib tg" onclick="setTheme()" aria-label="Ganti tema terang atau gelap"></button><button class="ib lg" onclick="setLang()" aria-label="Ganti bahasa"></button><button class="btn g s" onclick="logout()">${ic('out')}Keluar</button></div>`+V[view]();tgi();applyLang();save();setTimeout(checkReminders,0)}
+function render(){ensureReminderPrefs();nav();$('#v').innerHTML=`<div class="top"><span class="sy" id="sy" onclick="reconnectTaktiva()" role="button"></span><button class="ib reminder-bell" onclick="go('reminders')" aria-label="${T('Pusat pengingat','Reminder center')}">${ic('bell')}${reminderCount()?`<i class="reminder-count">${Math.min(99,reminderCount())}</i>`:''}</button><button class="ib profile-shortcut" onclick="go('me')" aria-label="Profil">${avatarHTML()}</button><button class="ib tg" onclick="setTheme()" aria-label="Ganti tema terang atau gelap"></button><button class="ib lg" onclick="setLang()" aria-label="Ganti bahasa"></button><button class="btn g s" onclick="logout()">${ic('out')}Keluar</button></div>`+V[view]();tgi();applyLang();save();setTimeout(checkReminders,0)}
 const hd=(t,p,b='')=>`<div class="hd"><div><h2>${t}</h2><p>${p}</p></div>${b}</div>`;
 const addBtn=`<button class="btn" onclick="openTask()">${ic('plus')}Tambah tugas</button>`;
 const taskRow=(a,extra='')=>`<div class="row" data-pid="${a.t.id}"><div class="m"><b>${e(a.t.title)}</b><small>${e(a.t.course)} · ${impTag(a.t)} · ${fd(a.t.due)} (${when(dd(a.t.due))}) · sisa ${H(a.rem)}</small></div>${extra}${pill(a.risk)}</div>`;
@@ -824,7 +839,7 @@ const queue=()=>{clearTimeout(pend);pend=setTimeout(push,1200)},dirtyNow=()=>{st
 async function push(){if(!cloud||!tok||busy)return false;busy=true;setSt('sync');let ok=false;try{for(let i=0;i<3;i++){stamp();const sent=JSON.stringify(S),r=await api('data',{method:'PUT',body:`{"data":${sent},"rev":${rev}}`});if(r.s==200){rev=r.j.rev;lastJ=sent;try{localStorage.setItem(RV+em,rev)}catch(x){}ok=true;break}if(r.s==409){merge(r.j.data);rev=r.j.rev;merged=true;continue}if(r.s==401){busy=false;expire();return false}break}}finally{busy=false}
 setSt(ok?'ok':'off');if(merged){merged=false;render()}else if(ok&&JSON.stringify(S)!==lastJ)queue();return ok}
 async function pull(){if(!cloud||!tok||busy||dlg.open||!$('#auth').hidden)return;const el=document.activeElement;if(el&&/INPUT|TEXTAREA|SELECT/.test(el.tagName))return;const r=await api('data');if(r.s==401)return expire();if(r.s!=200||!r.j.data||r.j.rev<=rev)return;if(dirtyNow())merge(r.j.data);else{S=r.j.data;resnap();lastJ=JSON.stringify(S)}rev=r.j.rev;try{localStorage.setItem(RV+em,rev)}catch(x){}render();toast(T('Data diperbarui dari perangkat lain.','Updated from another device.'))}
-function save(){if(cloud&&tok)stamp();try{localStorage.setItem(K,JSON.stringify(S))}catch(x){}if(cloud&&tok&&JSON.stringify(S)!==lastJ){setSt(navigator.onLine?'sync':'off');queue()}else paintSy()}
+function save(){if(tok&&em)stamp();try{localStorage.setItem(K,JSON.stringify(S))}catch(x){}if(cloud&&tok&&JSON.stringify(S)!==lastJ){setSt(navigator.onLine?'sync':'off');queue()}else paintSy()}
 function authUI(r){reg=r;$('#rg').hidden=!r;$('#rg2').hidden=!(r&&cloud);a_p.autocomplete=r?'new-password':'current-password';$('#t_in').className='btn s'+(r?' g':'');$('#t_up').className='btn s'+(r?'':' g');$('#a_b').textContent=r?'Buat akun':'Masuk';$('#a_m').textContent='';applyLang()}
 function startApp(){view='dash';sel=null;const v=$('#v');v.classList.add('an');setTimeout(()=>v.classList.remove('an'),800);document.body.classList.remove('ld');$('#auth').hidden=true;$('.app').hidden=false;render()}
 function start(m){em=m;K='taskmate.data.'+m;load();startApp()}
@@ -833,9 +848,35 @@ function expire(sl){clearTimeout(pend);try{localStorage.removeItem(SK);localStor
 async function logout(){if(cloud&&tok){while(busy)await new Promise(r=>setTimeout(r,200));if(dirtyNow()){setSt('sync');const ok=await push();if(!ok&&!confirm(T('Ada perubahan yang belum tersinkron. Tetap keluar? Perubahan itu akan hilang.','Some changes are not synced yet. Sign out anyway? Those changes will be lost.')))return}try{localStorage.removeItem(K);localStorage.removeItem(RV+em)}catch(x){}}
 clearTimeout(pend);try{localStorage.removeItem(SK);localStorage.removeItem(TKN)}catch(x){}showAuth()}
 const authGo=()=>cloud?cloudAuth():doAuth();
-async function enter(m,u){em=m;K='taskmate.data.'+m;const d=await api('data');if(d.s==401)return expire();
-if(d.s==200&&d.j.data){S=d.j.data;rev=d.j.rev;lastJ=JSON.stringify(S);resnap();setSt('ok')}else{rev=0;lastJ='';snap={};load(false);if(!S.prefs.name||S.prefs.name=='Mahasiswa')S.prefs.name=u.name;S.prefs.level=S.prefs.level||u.level;setSt('sync')}
-try{localStorage.setItem(RV+m,rev)}catch(x){}startApp()}
+async function enter(m,u){
+ em=m;K='taskmate.data.'+m;
+ let cached=null;
+ try{
+  const raw=localStorage.getItem(K);
+  if(raw){const parsed=JSON.parse(raw);if(parsed&&Array.isArray(parsed.tasks)&&parsed.prefs)cached=parsed}
+ }catch(x){}
+ const d=await api('data');
+ if(d.s==401)return expire();
+ if(d.s==200&&d.j.data){
+  offlineCacheLoaded=false;
+  rev=d.j.rev;
+  lastJ=JSON.stringify(d.j.data);
+  if(cached){S=cached;merge(d.j.data)}else{S=d.j.data;resnap()}
+  setSt('ok');
+ }else if(d.s==0&&cached){
+  offlineCacheLoaded=true;
+  S=cached;lastJ=JSON.stringify(S);resnap();setSt('off');
+ }else{
+  rev=0;lastJ='';snap={};
+  if(cached)S=cached;else load(false);
+  if(!S.prefs.name||S.prefs.name=='Mahasiswa')S.prefs.name=u.name;
+  S.prefs.level=S.prefs.level||u.level;
+  setSt(d.s==0?'off':'sync');
+ }
+ try{localStorage.setItem(RV+m,rev);localStorage.setItem(K,JSON.stringify(S))}catch(x){}
+ startApp();
+ if(cloud&&tok&&JSON.stringify(S)!==lastJ)queue();
+}
 async function cloudAuth(){const m=a_e.value.trim().toLowerCase(),p=a_p.value,msg=x=>{$('#a_m').textContent=x},b=$('#a_b');
 if(!/^[^ @]+@[^ @]+[.][^ @]+$/.test(m))return msg(T('Masukkan email yang valid.','Enter a valid email.'));if(p.length<8)return msg(T('Kata sandi minimal 8 karakter.','Password must be at least 8 characters.'));
 if(reg){if(!a_n.value.trim())return msg(T('Isi nama lengkapmu.','Enter your full name.'));if(p!==a_c.value)return msg(T('Konfirmasi kata sandi tidak sama.','Passwords do not match.'))}
@@ -847,14 +888,60 @@ if(r.s==401)return msg(T('Email atau kata sandi salah.','Incorrect email or pass
 if(r.s==429)return msg(T('Terlalu banyak percobaan. Coba lagi dalam 10 menit.','Too many attempts. Try again in 10 minutes.'));
 if(r.s!=200)return msg(T('Terjadi masalah di server. Coba lagi.','Server problem. Please try again.'));
 tok=r.j.token;try{localStorage.setItem(TKN,tok);localStorage.setItem(SK,m)}catch(x){}a_p.value=a_c.value='';await enter(m,r.j.user)}
-async function boot(){document.body.classList.add('ld');glow();try{const t=localStorage.getItem(TK);if(t)document.documentElement.dataset.theme=t}catch(x){}
-const pg=await api('ping',{},3000);cloud=pg.s==200&&!!pg.j.ok;let s='',t='';try{s=localStorage.getItem(SK);t=localStorage.getItem(TKN)}catch(x){}
-if(cloud){if(s&&t){tok=t;em=s;K='taskmate.data.'+s;try{rev=+localStorage.getItem(RV+s)||0}catch(x){}const d=await api('data');
-if(d.s==401)expire(true);else{if(d.s==200&&d.j.data){S=d.j.data;rev=d.j.rev;lastJ=JSON.stringify(S);resnap();setSt('ok')}else{load();setSt(d.s==0?'off':'sync')}startApp()}}else showAuth()}
-else if(s&&users()[s])start(s);else showAuth();
-[a_p,a_c].forEach(x=>x.addEventListener('keydown',ev=>{if(ev.key=='Enter')authGo()}));
-setInterval(pull,25000);document.addEventListener('visibilitychange',()=>{if(!document.hidden){pull();checkReminders()}});setInterval(checkReminders,60000);addEventListener('online',push);addEventListener('offline',()=>setSt('off'));
-addEventListener('pagehide',()=>{if(cloud&&tok&&em&&$('#auth').hidden){stamp();const s=JSON.stringify(S);if(s!==lastJ)fetch('/api/data',{method:'PUT',keepalive:true,headers:{'content-type':'application/json',authorization:'Bearer '+tok},body:`{"data":${s},"rev":${rev}}`})}})}
+async function boot(){
+ document.body.classList.add('ld');glow();
+ try{const theme=localStorage.getItem(TK);if(theme)document.documentElement.dataset.theme=theme}catch(x){}
+ registerTaktivaWorker();
+ const pg=await api('ping',{},3000);
+ cloud=pg.s==200&&!!pg.j.ok;
+ let s='',t='';
+ try{s=localStorage.getItem(SK);t=localStorage.getItem(TKN)}catch(x){}
+ if(cloud){
+  if(s&&t){
+   tok=t;em=s;K='taskmate.data.'+s;
+   const hadCache=loadCachedCloudAccount(s);
+   try{rev=+localStorage.getItem(RV+s)||0}catch(x){}
+   const d=await api('data');
+   if(d.s==401)expire(true);
+   else if(d.s==200&&d.j.data){
+    const remote=d.j.data;
+    offlineCacheLoaded=false;
+    lastJ=JSON.stringify(remote);
+    if(hadCache){const cached=S;S=cached;merge(remote)}
+    else{S=remote;resnap()}
+    rev=d.j.rev;setSt('ok');
+    try{localStorage.setItem(K,JSON.stringify(S));localStorage.setItem(RV+s,rev)}catch(x){}
+    startApp();
+    if(JSON.stringify(S)!==lastJ)queue();
+   }else if(hadCache){
+    offlineCacheLoaded=true;
+    setSt('off');startApp();
+   }else if(d.s==0){
+    showAuth();
+   }else{
+    load(false);setSt('sync');startApp();
+   }
+  }else showAuth();
+ }else if(s&&t){
+  tok=t;
+  if(loadCachedCloudAccount(s))startApp();
+  else showAuth();
+ }else if(s&&users()[s])start(s);
+ else showAuth();
+ [a_p,a_c].forEach(x=>x.addEventListener('keydown',ev=>{if(ev.key=='Enter')authGo()}));
+ setInterval(pull,25000);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden){pull();checkReminders()}});
+ setInterval(checkReminders,60000);
+ addEventListener('online',async()=>{await reconnectTaktiva();if(!$('.app').hidden)render()});
+ addEventListener('offline',()=>{setSt('off');if(!$('.app').hidden)render()});
+ addEventListener('pagehide',()=>{
+  if(tok&&em&&$('#auth').hidden){
+   stamp();const data=JSON.stringify(S);
+   try{localStorage.setItem(K,data)}catch(x){}
+   if(cloud&&data!==lastJ)fetch('/api/data',{method:'PUT',keepalive:true,headers:{'content-type':'application/json',authorization:'Bearer '+tok},body:`{"data":${data},"rev":${rev}}`});
+  }
+ });
+}
 const paintImp=()=>document.querySelectorAll('#f_ib button').forEach((b,i)=>{b.className='btn s '+(+f_i.value==i+1?'':'g')}),setImp=n=>{f_i.value=n;paintImp()},impTag=t=>{const n=+t.imp||2;return `<span class='ip i${n}'>${'★'.repeat(n)} ${T('Kepentingan','Importance')} ${[,T('Rendah','Low'),T('Sedang','Medium'),T('Tinggi','High')][n]}</span>`};
 
 // ===== Smart Planner v5: adaptive, capacity-aware 7-day schedule =====
@@ -1247,6 +1334,104 @@ function analyticsPanel(){
 }
 const _taktivaProgBeforeAnalytics=V.prog;
 V.prog=function(){return _taktivaProgBeforeAnalytics()+analyticsPanel()};
+
+
+// ===== Offline Mode & PWA v10 =====
+let deferredInstallPrompt=null;
+let pwaShellReady=false;
+let offlineCacheLoaded=false;
+function pwaDashboardCard(){
+ const online=navigator.onLine;
+ const installed=(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;
+ const ready=pwaShellReady||!!(navigator.serviceWorker&&navigator.serviceWorker.controller);
+ const state=online?T('Terhubung ke internet','Online'):T('Mode offline aktif','Offline mode active');
+ const detail=online
+  ?T('Taktiva menyimpan perubahan di perangkat dan menyinkronkannya ke cloud saat koneksi tersedia.','Taktiva saves changes on this device and syncs them to the cloud when connected.')
+  :T('Kamu tetap bisa membuka dan mengubah tugas. Perubahan akan disinkronkan saat internet kembali.','You can still open and edit tasks. Changes will sync when the internet returns.');
+ const install=installed
+  ?`<span class='pwa-pill'>${T('Sudah terpasang','Installed')}</span>`
+  :deferredInstallPrompt
+   ?`<button class='btn s' onclick='installTaktiva()'>${T('Pasang aplikasi','Install app')}</button>`
+   :`<span class='pwa-pill'>${T('Bisa dipasang dari menu browser','Install from browser menu')}</span>`;
+ return `<section class='card pwa-card'><div class='pwa-main'><div class='pwa-mark'>${ic('download')}</div><div class='pwa-copy'><b>${ready?T('Taktiva siap menemani saat offline','Taktiva is ready for offline use'):T('Siapkan akses offline Taktiva','Prepare Taktiva for offline use')}</b><small>${ready?state+' · '+detail:T('Buka aplikasi sekali saat online agar halaman dan aset tersimpan di perangkat ini.','Open the app once while online so the app shell and assets can be saved on this device.')}</small></div></div><div class='pwa-actions'><span class='pwa-pill ${online?'':'off'}'>${state}</span>${install}</div></section>`;
+}
+async function installTaktiva(){
+ if(!deferredInstallPrompt){
+  toast(T('Gunakan menu browser lalu pilih “Install app” atau “Tambahkan ke layar utama”.','Open your browser menu and choose “Install app” or “Add to Home Screen”.'));
+  return;
+ }
+ const promptEvent=deferredInstallPrompt;
+ deferredInstallPrompt=null;
+ try{
+  await promptEvent.prompt();
+  await promptEvent.userChoice;
+ }catch(e){}
+ render();
+}
+window.addEventListener('beforeinstallprompt',ev=>{
+ ev.preventDefault();deferredInstallPrompt=ev;
+ if(!$('.app').hidden)render();
+});
+window.addEventListener('appinstalled',()=>{
+ deferredInstallPrompt=null;
+ if(!$('.app').hidden)render();
+ toast(T('Taktiva berhasil dipasang.','Taktiva was installed successfully.'));
+});
+async function registerTaktivaWorker(){
+ if(!('serviceWorker' in navigator)||!/^https?:$/.test(location.protocol))return;
+ try{
+  const reg=await navigator.serviceWorker.register('/sw.js',{scope:'/'});
+  await navigator.serviceWorker.ready;
+  pwaShellReady=!!reg.active||!!navigator.serviceWorker.controller;
+  if(!$('.app').hidden)render();
+  if(reg.waiting&&navigator.serviceWorker.controller){
+   // Keep the current session stable; the new worker activates on the next natural reload.
+  }
+ }catch(e){pwaShellReady=false}
+}
+const _taktivaDashBeforePWA=V.dash;
+V.dash=function(){return _taktivaDashBeforePWA()+pwaDashboardCard()};
+async function reconnectTaktiva(){
+ if(!navigator.onLine)return;
+ const ping=await api('ping',{},4000);
+ if(ping.s!==200||!ping.j.ok)return;
+ cloud=true;
+ if(tok&&em&&$('#auth').hidden){
+  setSt('sync');
+  stamp();
+  if(offlineCacheLoaded){
+   const r=await api('data');
+   if(r.s==401)return expire();
+   if(r.s==200&&r.j.data){
+    const localState=S;
+    lastJ=JSON.stringify(r.j.data);
+    S=localState;merge(r.j.data);rev=r.j.rev;offlineCacheLoaded=false;
+    try{localStorage.setItem(K,JSON.stringify(S));localStorage.setItem(RV+em,rev)}catch(x){}
+    if(JSON.stringify(S)!==lastJ)await push();else setSt('ok');
+    return;
+   }
+   setSt('off');return;
+  }
+  if(JSON.stringify(S)!==lastJ)await push();
+  else await pull();
+ }else setSt('local');
+}
+function loadCachedCloudAccount(email){
+ em=email;K='taskmate.data.'+email;
+ try{
+  const raw=localStorage.getItem(K);
+  if(!raw)return false;
+  const cached=JSON.parse(raw);
+  if(!cached||!Array.isArray(cached.tasks)||!cached.prefs)return false;
+  S=cached;
+  offlineCacheLoaded=true;
+  rev=+localStorage.getItem(RV+email)||0;
+  lastJ=JSON.stringify(S);
+  resnap();
+  setSt('off');
+  return true;
+ }catch(e){return false}
+}
 
 boot();
 </script></body></html>

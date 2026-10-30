@@ -112,3 +112,14 @@ Lalu daftar akun di satu perangkat, masuk di perangkat lain: tugasmu sama.
 - Displays a seven-day study-time chart and start-time patterns only when enough sessions have been logged.
 - Does not infer historical task completion dates or unrecorded study time. Historical analytics limitations are disclosed in the UI.
 - Active study timer is stored per browser/device; completed sessions are synced through the existing account preference sync.
+
+
+## Offline Mode & PWA v10
+- Adds a root-scoped service worker that caches the app shell, manifest, icons, and all 15 mascot SVG assets.
+- Navigation uses network-first with a cached app-shell fallback; static assets use cache-first with background refresh.
+- Authentication and `/api/` requests are never cached by the service worker.
+- A successfully authenticated cloud account snapshot (including a new empty account) is cached in that browser's local storage for offline reopening.
+- When offline, edits continue to save locally. On reconnection, the app retries cloud sync and uses the existing revision/merge flow.
+- Offline reopening requires the app to have been opened online at least once on that browser/device and the account to have a local cached snapshot.
+- PWA installation is supported through the browser install prompt where available; otherwise users can use the browser menu's “Install app” / “Add to Home Screen”.
+- This is app-shell offline support, not background push. Browser notifications and server-side push still require connectivity.
